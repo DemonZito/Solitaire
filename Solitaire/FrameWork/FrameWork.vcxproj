@@ -145,16 +145,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="backbuffer.cpp" />
+    <ClCompile Include="card.cpp" />
     <ClCompile Include="clock.cpp" />
+    <ClCompile Include="deck.cpp" />
+    <ClCompile Include="drawpile.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sprite.cpp" />
+    <ClCompile Include="tableaupile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="backbuffer.h" />
+    <ClInclude Include="card.h" />
     <ClInclude Include="clock.h" />
+    <ClInclude Include="deck.h" />
+    <ClInclude Include="drawpile.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="sprite.h" />
+    <ClInclude Include="tableaupile.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
