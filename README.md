@@ -1,2 +1,2 @@
-# DemonZito
+# Solitaire
 Solitaire
