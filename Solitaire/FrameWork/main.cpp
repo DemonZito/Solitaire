@@ -96,8 +96,12 @@ WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCmdline, int _i
     MSG msg;
     ZeroMemory(&msg, sizeof(MSG));
 
-    const int kiWidth = 400;
-    const int kiHeight = 400;
+	HWND DesktopWindow = GetDesktopWindow();
+	RECT _rect;
+	GetClientRect(DesktopWindow, &_rect);
+
+    const int kiWidth = _rect.right;
+    const int kiHeight = _rect.bottom;
 
     HWND hwnd = CreateAndRegisterWindow(_hInstance, kiWidth, kiHeight, L"BSENGG Framework");
 
