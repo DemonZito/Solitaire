@@ -28,6 +28,10 @@
 
 // Static Variables
 CGame* CGame::s_pGame = 0;
+static int m_iRoomWidth;
+static int m_iRoomHeight;
+static int m_iCardWidth;
+static int m_iCardHeight;
 
 // Static Function Prototypes
 
@@ -64,8 +68,8 @@ CGame::Initialise(HINSTANCE _hInstance, HWND _hWnd, int _iWidth, int _iHeight)
     m_pBackBuffer = new CBackBuffer();
     VALIDATE(m_pBackBuffer->Initialise(_hWnd, _iWidth, _iHeight));
 
-	CCard* KingDiamond = new CCard(13, 1, DIAMOND, true);
-	VALIDATE(KingDiamond->Initialise(IDB_KING_DIAMOND, IDB_CARD_MASK));
+	CCard* KingDiamond = new CCard(13, RED, DIAMOND, true);
+	//VALIDATE(KingDiamond->Initialise(IDB_KING_DIAMOND, IDB_CARD_MASK));
 	KingDiamond->setX(100);
 	KingDiamond->setY(100);
 
@@ -140,4 +144,39 @@ HWND
 CGame::GetWindow()
 {
     return (m_hMainWindow);
+}
+
+
+int CGame::GetRoomWidth() 
+{
+	return (m_iRoomWidth);
+}
+int CGame::GetRoomHeight() 
+{
+	return(m_iRoomHeight);
+}
+int CGame::GetCardWidth() 
+{
+	return(m_iCardWidth);
+}
+int CGame::GetCardHeight() 
+{
+	return(m_iCardHeight);
+}
+
+void CGame::SetRoomWidth(int _iWidth)
+{
+	m_iRoomWidth = _iWidth;
+}
+void CGame::SetRoomHeight(int _iHeight)
+{
+	m_iRoomHeight = _iHeight;
+}
+void CGame::SetCardWidth(int _iWidth)
+{
+	m_iCardWidth = _iWidth;
+}
+void CGame::SetCardHeight(int _iHeight)
+{
+	m_iCardHeight = _iHeight;
 }

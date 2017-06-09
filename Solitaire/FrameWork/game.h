@@ -44,6 +44,15 @@ public:
     CBackBuffer* GetBackBuffer();
     HINSTANCE GetAppInstance();
     HWND GetWindow();
+	static int GetRoomWidth();
+	static int GetRoomHeight();
+	static int GetCardWidth();
+	static int GetCardHeight();
+	static void SetRoomWidth(int _iWidth);
+	static void SetRoomHeight(int _iHeight);
+	static void SetCardWidth(int _iWidth);
+	static void SetCardHeight(int _iHeight);
+
 
     // Singleton Methods
     static CGame& GetInstance();
@@ -73,6 +82,7 @@ protected:
 
 private:
 
+	
 };
 
 #endif    // __GAME_H__

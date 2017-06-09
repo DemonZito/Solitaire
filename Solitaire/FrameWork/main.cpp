@@ -37,6 +37,40 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 
             return(0);
         }
+		case WM_SIZING:
+		{
+			RECT _rect;
+
+			GetClientRect(_hWnd, &_rect);
+			CGame::SetRoomHeight(_rect.bottom);
+			CGame::SetRoomWidth(_rect.right);
+			CGame::SetCardWidth((_rect.right) / 11);
+			CGame::SetCardHeight((_rect.bottom - (3 * CGame::GetCardWidth() / 5)) / 4.6);
+			
+			switch (_wParam)
+			{
+				case WMSZ_TOP:
+				case WMSZ_BOTTOM:
+				case WMSZ_TOPLEFT:
+				case WMSZ_TOPRIGHT:
+				{
+					CGame::SetRoomWidth(_rect.bottom / 9 * 16);
+					SetWindowPos(_hWnd, _hWnd, _rect.left, _rect.top, CGame::GetRoomWidth(), CGame::GetRoomHeight(), NULL);
+					break;
+				}
+				case WMSZ_LEFT:
+				case WMSZ_RIGHT:
+				case WMSZ_BOTTOMLEFT:
+				case WMSZ_BOTTOMRIGHT:
+				{
+					CGame::SetRoomHeight(_rect.right / 16 * 9);
+					SetWindowPos(_hWnd, _hWnd, _rect.left, _rect.top, CGame::GetRoomWidth(), CGame::GetRoomHeight(), NULL);
+					break;
+				}
+				default:break;
+				}
+		
+		}
         break;
 
         default:break;
@@ -70,10 +104,10 @@ CreateAndRegisterWindow(HINSTANCE _hInstance, int _iWidth, int _iHeight, LPCWSTR
     }
 
     HWND hwnd; 
-    hwnd = CreateWindowEx(NULL,
+    hwnd = CreateWindowEx(WS_EX_CLIENTEDGE,
                   WINDOW_CLASS_NAME,
                   _pcTitle,
-              WS_BORDER | WS_CAPTION | WS_SYSMENU | WS_VISIBLE, 
+              WS_BORDER | WS_CAPTION | WS_SYSMENU | WS_VISIBLE | WS_MAXIMIZEBOX | WS_MINIMIZEBOX | WS_SIZEBOX,
                   CW_USEDEFAULT, CW_USEDEFAULT,
                   _iWidth, _iHeight,
                   NULL,

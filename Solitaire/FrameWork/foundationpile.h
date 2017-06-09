@@ -19,11 +19,7 @@
 
 #include "card.h"
 
-enum colour {
-	NOCOLOUR = 0,
-	RED = 1,
-	BLACK,
-};
+
 
 class CFoundationPile
 {
