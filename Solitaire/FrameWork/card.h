@@ -18,12 +18,22 @@
 //Header Files
 #include "sprite.h"
 
-enum suit { HEART, DIAMOND, CLUB, SPADE };
+enum suit { NOSUIT = 0, 
+			HEART = 1, 
+			DIAMOND, 
+			CLUB, 
+			SPADE };
+
+enum colour {
+	NOCOLOUR = 0,
+	RED = 1,
+	BLACK,
+};
 
 class CCard
 {
 public:
-	CCard(const size_t& _szNumber, const bool& _bColour, suit _Suit, const bool& _bisVisible);
+	CCard(const size_t& _szNumber, colour _bColour, suit _Suit, const bool& _bisVisible);
 	~CCard();
 
 	bool Initialise(const int _kiSpriteID, const int _kiMaskID);
@@ -46,7 +56,7 @@ private:
 	CSprite* m_pSprite;
 	bool m_bisVisible; // 0 is invisible. 1 is visible
 	size_t m_szNumber;
-	bool m_bColour; //0 is black. 1 is red
+	colour m_bColour;
 	suit m_Suit;
 
 	int m_iX;

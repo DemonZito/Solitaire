@@ -26,7 +26,7 @@
 
 
 
-CCard::CCard(const size_t& _szNumber, const bool& _bColour, suit _Suit, const bool& _bisVisible)
+CCard::CCard(const size_t& _szNumber, colour _bColour, suit _Suit, const bool& _bisVisible)
 {
 	m_szNumber = _szNumber;
 	m_bColour = _bColour;

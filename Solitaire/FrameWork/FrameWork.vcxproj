@@ -149,6 +149,7 @@
     <ClCompile Include="clock.cpp" />
     <ClCompile Include="deck.cpp" />
     <ClCompile Include="drawpile.cpp" />
+    <ClCompile Include="foundationpile.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sprite.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="clock.h" />
     <ClInclude Include="deck.h" />
     <ClInclude Include="drawpile.h" />
+    <ClInclude Include="foundationpile.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="sprite.h" />
