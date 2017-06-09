@@ -30,6 +30,10 @@
 
 // Static Variables
 CGame* CGame::s_pGame = 0;
+static int m_iRoomWidth;
+static int m_iRoomHeight;
+static int m_iCardWidth;
+static int m_iCardHeight;
 
 // Static Function Prototypes
 
@@ -170,4 +174,39 @@ HWND
 CGame::GetWindow()
 {
     return (m_hMainWindow);
+}
+
+
+int CGame::GetRoomWidth() 
+{
+	return (m_iRoomWidth);
+}
+int CGame::GetRoomHeight() 
+{
+	return(m_iRoomHeight);
+}
+int CGame::GetCardWidth() 
+{
+	return(m_iCardWidth);
+}
+int CGame::GetCardHeight() 
+{
+	return(m_iCardHeight);
+}
+
+void CGame::SetRoomWidth(int _iWidth)
+{
+	m_iRoomWidth = _iWidth;
+}
+void CGame::SetRoomHeight(int _iHeight)
+{
+	m_iRoomHeight = _iHeight;
+}
+void CGame::SetCardWidth(int _iWidth)
+{
+	m_iCardWidth = _iWidth;
+}
+void CGame::SetCardHeight(int _iHeight)
+{
+	m_iCardHeight = _iHeight;
 }
