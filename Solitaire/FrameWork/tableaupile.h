@@ -27,7 +27,7 @@ public:
 
 	void Initalize();
 
-	void PopCard(CCard* _mCard);
+	std::list<CCard> PopCard(CCard* _mCard);
 
 	void PushCard(const CCard _mCard);
 

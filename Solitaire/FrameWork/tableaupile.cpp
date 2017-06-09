@@ -15,9 +15,10 @@ void CTableauPile::Initalize()
 {
 }
 
-void CTableauPile::PopCard(CCard* _mCard) 
+std::list<CCard> CTableauPile::PopCard(CCard* _mCard)
 {
-
+	std::list<CCard> _liMovingCards;
+	return _liMovingCards;
 }
 
 void CTableauPile::PushCard(const CCard _mCard)

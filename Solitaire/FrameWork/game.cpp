@@ -89,7 +89,9 @@ CGame::Initialise(HINSTANCE _hInstance, HWND _hWnd, int _iWidth, int _iHeight)
 		for (size_t num = 1; num < 14; num++)
 		{
 			pNewCard = new CCard(num, (suit % 2) + 1, suit, false);
+			pNewCard->Initialise((101 + num * suit), IDB_CARDMASK);
 			m_pDrawPile->PushCard(pNewCard);
+
 		}
 	}
 
