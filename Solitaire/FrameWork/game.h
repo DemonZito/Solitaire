@@ -27,6 +27,7 @@
 
 // Prototypes
 class CBackBuffer;
+class CDrawPile;
 
 class CGame
 {
@@ -72,7 +73,7 @@ protected:
     static CGame* s_pGame;
 
 private:
-
+	CDrawPile* m_pDrawPile;
 };
 
 #endif    // __GAME_H__

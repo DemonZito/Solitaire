@@ -26,7 +26,7 @@
 
 
 
-CCard::CCard(const size_t& _szNumber, colour _bColour, suit _Suit, const bool& _bisVisible)
+CCard::CCard(size_t _szNumber, colour _bColour, suit _Suit, bool _bisVisible)
 {
 	m_szNumber = _szNumber;
 	m_bColour = _bColour;
@@ -81,4 +81,9 @@ void CCard::setY(const int& _iY) {
 
 int CCard::getY() {
 	return m_iY;
+}
+
+CSprite* CCard::GetSprite()
+{
+	return m_pSprite;
 }

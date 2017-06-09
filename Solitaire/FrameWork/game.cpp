@@ -21,10 +21,12 @@
 #include "sprite.h"
 #include "card.h"
 #include "resource.h"
+#include "drawpile.h"
 
 
 // This Include
 #include "Game.h"
+//#include "PileEntity.h"
 
 // Static Variables
 CGame* CGame::s_pGame = 0;
@@ -39,7 +41,7 @@ CGame::CGame()
 , m_hMainWindow(0)
 , m_pBackBuffer(0)
 {
-
+	m_pDrawPile = new CDrawPile();
 }
 
 CGame::~CGame()
@@ -64,10 +66,17 @@ CGame::Initialise(HINSTANCE _hInstance, HWND _hWnd, int _iWidth, int _iHeight)
     m_pBackBuffer = new CBackBuffer();
     VALIDATE(m_pBackBuffer->Initialise(_hWnd, _iWidth, _iHeight));
 
-	CCard* KingDiamond = new CCard(13, 1, DIAMOND, true);
-	VALIDATE(KingDiamond->Initialise(IDB_KING_DIAMOND, IDB_CARD_MASK));
-	KingDiamond->setX(100);
-	KingDiamond->setY(100);
+	CCard* newCard = new CCard(13, RED, DIAMOND, true);
+	VALIDATE(newCard->Initialise(IDB_KING_DIAMOND, IDB_CARD_MASK));
+
+	m_pDrawPile->PushCard(newCard);
+	m_pDrawPile->SetX(500);
+	m_pDrawPile->SetY(500);
+
+
+	//delete newCard;
+	//newCard = 0;
+	
 
 	ShowCursor(true);
 
@@ -80,7 +89,7 @@ CGame::Draw()
     m_pBackBuffer->Clear();
 
 // Do all the game’s drawing here...
-
+	m_pDrawPile->Draw();
 
     m_pBackBuffer->Present();
 }
@@ -90,7 +99,7 @@ CGame::Process(float _fDeltaTick)
 {
     // Process all the game’s logic here.
 	//Load a new sprite.
-	
+	m_pDrawPile->Process(_fDeltaTick);
 }
 
 void 

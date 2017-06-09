@@ -4,6 +4,7 @@
 
 CDrawPile::CDrawPile()
 {
+
 }
 
 
@@ -15,14 +16,21 @@ void CDrawPile::Initalize()
 {
 }
 
-CCard CDrawPile::PopCard()
+void CDrawPile::Draw()
 {
-	CCard _DrawnCard = m_staDeck.top();
-	m_staDeck.pop();
+	CPileEntity::Draw();
+}
+
+CCard* CDrawPile::PopCard()
+{
+	CCard* _DrawnCard = m_listpSprite.front();
+	m_listpSprite.pop_back();
 	return _DrawnCard;
 }
 
-void CDrawPile::PushCard(const CCard _mCard)
+void CDrawPile::PushCard(CCard* _mCard)
 {
-	m_staDeck.push(_mCard);
+	
+	m_listpSprite.push_back(_mCard);
 }
+

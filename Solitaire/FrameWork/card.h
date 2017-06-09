@@ -33,7 +33,7 @@ enum colour {
 class CCard
 {
 public:
-	CCard(const size_t& _szNumber, colour _bColour, suit _Suit, const bool& _bisVisible);
+	CCard(size_t _szNumber, colour _bColour, suit _Suit, bool _bisVisible);
 	~CCard();
 
 	bool Initialise(const int _kiSpriteID, const int _kiMaskID);
@@ -50,6 +50,9 @@ public:
 	int getX();
 	void setY(const int& _iY);
 	int getY();
+
+
+	CSprite* GetSprite();
 
 private:
 
