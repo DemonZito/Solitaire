@@ -66,13 +66,32 @@ CGame::Initialise(HINSTANCE _hInstance, HWND _hWnd, int _iWidth, int _iHeight)
     m_pBackBuffer = new CBackBuffer();
     VALIDATE(m_pBackBuffer->Initialise(_hWnd, _iWidth, _iHeight));
 
-	CCard* newCard = new CCard(13, RED, DIAMOND, true);
+	/*CCard* newCard = new CCard(13, RED, DIAMOND, true);
 	VALIDATE(newCard->Initialise(IDB_KING_DIAMOND, IDB_CARD_MASK));
 
 	m_pDrawPile->PushCard(newCard);
-	m_pDrawPile->SetX(500);
-	m_pDrawPile->SetY(500);
+	
 
+	CCard* newCard2 = new CCard(9, RED, DIAMOND, true);
+	
+	VALIDATE(newCard2->Initialise(IDB_9DIAMONDS, IDB_CARD_MASK));
+
+	m_pDrawPile->PushCard(newCard2);
+
+	m_pDrawPile->SetX(500);
+	m_pDrawPile->SetY(500);*/
+
+	
+	CCard* pNewCard;
+
+	for (size_t suit = 1; suit < 5; suit++)
+	{
+		for (size_t num = 1; num < 14; num++)
+		{
+			pNewCard = new CCard(num, (suit % 2) + 1, suit, false);
+			m_pDrawPile->PushCard(pNewCard);
+		}
+	}
 
 	//delete newCard;
 	//newCard = 0;

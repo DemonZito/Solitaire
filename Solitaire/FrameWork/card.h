@@ -20,20 +20,20 @@
 
 enum suit { NOSUIT = 0, 
 			HEART = 1, 
-			DIAMOND, 
 			CLUB, 
+			DIAMOND,
 			SPADE };
 
 enum colour {
 	NOCOLOUR = 0,
-	RED = 1,
-	BLACK,
+	BLACK = 1,
+	RED
 };
 
 class CCard
 {
 public:
-	CCard(size_t _szNumber, colour _bColour, suit _Suit, bool _bisVisible);
+	CCard(size_t _szNumber, size_t _bColour, size_t _Suit, bool _bisVisible);
 	~CCard();
 
 	bool Initialise(const int _kiSpriteID, const int _kiMaskID);

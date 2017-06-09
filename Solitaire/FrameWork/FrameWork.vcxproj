@@ -215,9 +215,6 @@
     <Image Include="AHeart.bmp" />
     <Image Include="ASpade.bmp" />
     <Image Include="CardBack.bmp" />
-    <Image Include="D:\Users\Madeleine.Day7218\Downloads\KS.bmp" />
-    <Image Include="D:\Users\Madeleine.Day7218\Downloads\KS.png" />
-    <Image Include="D:\Users\Madeleine.Day7218\Downloads\KS_MASK.bmp" />
     <Image Include="JClub.bmp" />
     <Image Include="JDiamond.bmp" />
     <Image Include="JHeart.bmp" />
