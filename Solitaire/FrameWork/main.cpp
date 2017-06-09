@@ -20,6 +20,9 @@
 #include "Game.h"
 #include "Clock.h"
 #include "utils.h"
+#include "card.h"
+
+//Global Variables
 
 #define WINDOW_CLASS_NAME L"BSENGGFRAMEWORK"
 
