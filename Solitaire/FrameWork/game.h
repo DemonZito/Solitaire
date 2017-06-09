@@ -17,6 +17,8 @@
 
 // Library Includes
 #include <windows.h>
+#include <vector>
+
 
 // Local Includes
 #include "clock.h"
@@ -27,6 +29,8 @@
 
 // Prototypes
 class CBackBuffer;
+class CDrawPile;
+class CCard;
 
 class CGame
 {
@@ -81,6 +85,8 @@ protected:
     static CGame* s_pGame;
 
 private:
+	CDrawPile* m_pDrawPile;
+	std::vector<CCard*> m_vecpCards;
 
 	
 };

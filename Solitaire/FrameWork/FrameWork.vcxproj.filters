@@ -45,6 +45,9 @@
     <ClCompile Include="foundationpile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PileEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="backbuffer.h">
@@ -77,6 +80,12 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="foundationpile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PileEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="FrameWork.rc">
@@ -84,21 +93,18 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="D:\Users\Madeleine.Day7218\Downloads\KS.bmp">
+    <Image Include="10Clubs.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="D:\Users\Madeleine.Day7218\Downloads\KS.png">
+    <Image Include="10Diamonds.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="D:\Users\Madeleine.Day7218\Downloads\KS_MASK.bmp">
+    <Image Include="10Hearts.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <ClInclude Include="foundationpile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <Image Include="10Spades.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
     <Image Include="2Club.bmp">
       <Filter>Resource Files</Filter>
     </Image>
@@ -195,18 +201,6 @@
     <Image Include="9Spades.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="10Clubs.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="10Diamonds.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="10Hearts.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="10Spades.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="AClub.bmp">
       <Filter>Resource Files</Filter>
     </Image>
@@ -258,10 +252,5 @@
     <Image Include="QSpade.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="FrameWork.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>

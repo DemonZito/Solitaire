@@ -19,8 +19,6 @@
 
 #include "card.h"
 
-
-
 class CFoundationPile
 {
 public:

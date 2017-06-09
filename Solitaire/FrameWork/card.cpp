@@ -26,11 +26,11 @@
 
 
 
-CCard::CCard(const size_t& _szNumber, colour _bColour, suit _Suit, const bool& _bisVisible)
+CCard::CCard(size_t _szNumber, size_t _bColour, size_t _Suit, bool _bisVisible)
 {
 	m_szNumber = _szNumber;
-	m_bColour = _bColour;
-	m_Suit = _Suit;
+	m_bColour = static_cast<colour>(_bColour);
+	m_Suit = static_cast<suit>(_Suit);
 	m_bisVisible = _bisVisible;
 }
 
@@ -59,7 +59,8 @@ const size_t CCard::getNumber() {
 	return m_szNumber;
 }
 
-const bool CCard::getColour() {
+const bool CCard::getColour() 
+{
 	return m_bColour;
 }
 
@@ -81,4 +82,9 @@ void CCard::setY(const int& _iY) {
 
 int CCard::getY() {
 	return m_iY;
+}
+
+CSprite* CCard::GetSprite()
+{
+	return m_pSprite;
 }

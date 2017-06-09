@@ -152,6 +152,7 @@
     <ClCompile Include="foundationpile.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PileEntity.cpp" />
     <ClCompile Include="sprite.cpp" />
     <ClCompile Include="tableaupile.cpp" />
   </ItemGroup>
@@ -163,6 +164,7 @@
     <ClInclude Include="drawpile.h" />
     <ClInclude Include="foundationpile.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="PileEntity.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="sprite.h" />
     <ClInclude Include="tableaupile.h" />
@@ -213,9 +215,6 @@
     <Image Include="AHeart.bmp" />
     <Image Include="ASpade.bmp" />
     <Image Include="CardBack.bmp" />
-    <Image Include="D:\Users\Madeleine.Day7218\Downloads\KS.bmp" />
-    <Image Include="D:\Users\Madeleine.Day7218\Downloads\KS.png" />
-    <Image Include="D:\Users\Madeleine.Day7218\Downloads\KS_MASK.bmp" />
     <Image Include="JClub.bmp" />
     <Image Include="JDiamond.bmp" />
     <Image Include="JHeart.bmp" />

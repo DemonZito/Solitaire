@@ -11,28 +11,32 @@
 // Author		: Your Name
 // Mail			: your.name@mediadesign.school.nz
 //
-#include <stack>
+#include <list>
 
 #include "card.h"
+#include "PileEntity.h"
 
 #if !defined(__DRAWPILE_H__)
 #define __DRAWPILE_H__
 
-class CDrawPile
+class CDrawPile : public CPileEntity
 {
 public:
 	CDrawPile();
 	~CDrawPile();
 
 	void Initalize();
+	void Draw();
 
-	CCard PopCard();
+	CCard* PopCard();
 
-	void PushCard(const CCard _mCard);
+	void PushCard(CCard* _mCard);
+
+
 
 
 private:
-	std::stack<CCard> m_staDeck;
+	//std::list<CCard*> m_staDeck;
 
 };
 #endif // __DRAWPILE_H__
