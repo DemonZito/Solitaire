@@ -161,9 +161,18 @@
     <ClInclude Include="deck.h" />
     <ClInclude Include="drawpile.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="sprite.h" />
     <ClInclude Include="tableaupile.h" />
     <ClInclude Include="utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FrameWork.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="D:\Users\Madeleine.Day7218\Downloads\KS.bmp" />
+    <Image Include="D:\Users\Madeleine.Day7218\Downloads\KS.png" />
+    <Image Include="D:\Users\Madeleine.Day7218\Downloads\KS_MASK.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

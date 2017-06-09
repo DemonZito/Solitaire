@@ -19,6 +19,8 @@
 #include "BackBuffer.h"
 #include "utils.h"
 #include "sprite.h"
+#include "card.h"
+#include "resource.h"
 
 
 // This Include
@@ -61,6 +63,11 @@ CGame::Initialise(HINSTANCE _hInstance, HWND _hWnd, int _iWidth, int _iHeight)
 
     m_pBackBuffer = new CBackBuffer();
     VALIDATE(m_pBackBuffer->Initialise(_hWnd, _iWidth, _iHeight));
+
+	CCard* KingDiamond = new CCard(13, 1, DIAMOND, true);
+	VALIDATE(KingDiamond->Initialise(IDB_KING_DIAMOND, IDB_CARD_MASK));
+	KingDiamond->setX(100);
+	KingDiamond->setY(100);
 
 	ShowCursor(true);
 
