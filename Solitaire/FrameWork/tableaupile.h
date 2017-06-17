@@ -15,24 +15,26 @@
 #if !defined(__TABLEAUPILE_H__)
 #define __TABLEAUPILE_H__
 
-#include <list>
+#include <queue>
 
+#include "PileEntity.h"
 #include "card.h"
 
-class CTableauPile
+class CTableauPile : public CPileEntity
 {
 public:
 	CTableauPile();
 	~CTableauPile();
 
 	void Initalize();
+	void Draw();
 
-	std::list<CCard> PopCard(CCard* _mCard);
+	std::deque<CCard> PopCard(CCard* _mCard);
 
-	void PushCard(const CCard _mCard);
+	void PushCard(CCard* _mCard, int _iNum);
 
 private:
-	std::list<CCard> m_pTableauPile;
+	std::deque<CCard*> m_pTableauPile[7];
 }; 
 
 #endif    // __TABLEAUPILE_H__

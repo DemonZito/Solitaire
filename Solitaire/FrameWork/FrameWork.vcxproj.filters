@@ -213,9 +213,6 @@
     <Image Include="ASpade.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="CardBack.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="JClub.bmp">
       <Filter>Resource Files</Filter>
     </Image>
@@ -409,6 +406,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Sprites\ASpade.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\CardBack.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

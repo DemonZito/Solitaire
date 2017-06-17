@@ -30,7 +30,10 @@
 // Prototypes
 class CBackBuffer;
 class CDrawPile;
+class CDeck;
+class CTableauPile;
 class CCard;
+class CSprite;
 
 class CGame
 {
@@ -57,6 +60,14 @@ public:
 	static void SetCardWidth(int _iWidth);
 	static void SetCardHeight(int _iHeight);
 
+	static bool CheckDeckClicked(CGame& _rGame, POINT _mousePos);
+	static CCard* CheckDraggableClicked(CGame& _rGame, POINT _mousePos);
+	static void Dragging(CGame& _rGame, POINT _mousePos);
+
+	void ShiftDeckToDraw();
+	void ShiftDrawToDeck();
+	
+
 
     // Singleton Methods
     static CGame& GetInstance();
@@ -72,6 +83,8 @@ private:
     // Member Variables
 public:
 
+	CSprite* m_pCardBack;
+
 protected:
     CClock* m_pClock;
 
@@ -86,6 +99,9 @@ protected:
 
 private:
 	CDrawPile* m_pDrawPile;
+	CDeck* m_pDeck;
+	CTableauPile* m_pTableau;
+
 	std::vector<CCard*> m_vecpCards;
 
 	

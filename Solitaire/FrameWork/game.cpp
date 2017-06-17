@@ -13,6 +13,7 @@
 //
 
 // Library Includes
+#include <time.h>
 
 // Local Includes
 #include "Clock.h"
@@ -22,6 +23,8 @@
 #include "card.h"
 #include "resource.h"
 #include "drawpile.h"
+#include "deck.h"
+#include "tableaupile.h"
 
 
 // This Include
@@ -46,6 +49,8 @@ CGame::CGame()
 , m_pBackBuffer(0)
 {
 	m_pDrawPile = new CDrawPile();
+	m_pDeck = new CDeck();
+	m_pTableau = new CTableauPile();
 }
 
 CGame::~CGame()
@@ -60,6 +65,8 @@ CGame::~CGame()
 bool
 CGame::Initialise(HINSTANCE _hInstance, HWND _hWnd, int _iWidth, int _iHeight)
 {
+	srand(time(NULL));
+
     m_hApplicationInstance = _hInstance;
     m_hMainWindow = _hWnd;
 
@@ -70,38 +77,47 @@ CGame::Initialise(HINSTANCE _hInstance, HWND _hWnd, int _iWidth, int _iHeight)
     m_pBackBuffer = new CBackBuffer();
     VALIDATE(m_pBackBuffer->Initialise(_hWnd, _iWidth, _iHeight));
 
-	/*CCard* newCard = new CCard(13, RED, DIAMOND, true);
-	VALIDATE(newCard->Initialise(IDB_KING_DIAMOND, IDB_CARD_MASK));
-
-	m_pDrawPile->PushCard(newCard);
-	
-
-	CCard* newCard2 = new CCard(9, RED, DIAMOND, true);
-	
-	VALIDATE(newCard2->Initialise(IDB_9DIAMONDS, IDB_CARD_MASK));
-
-	m_pDrawPile->PushCard(newCard2);
-
-	m_pDrawPile->SetX(500);
-	m_pDrawPile->SetY(500);*/
-
-	
 	CCard* pNewCard;
+	int iCardSpriteTrack = 102;
 
 	for (size_t suit = 1; suit < 5; suit++)
 	{
 		for (size_t num = 1; num < 14; num++)
 		{
-			pNewCard = new CCard(num, (suit % 2) + 1, suit, false);
-			pNewCard->Initialise((101 + num * suit), IDB_CARDMASK);
-			m_pDrawPile->PushCard(pNewCard);
+			pNewCard = new CCard(num, (suit % 2) + 1, suit, false, false);
+			pNewCard->Initialise(iCardSpriteTrack, IDB_CARDMASK);
+			m_vecpCards.push_back(pNewCard);
+			iCardSpriteTrack++;
 
 		}
 	}
 
-	//delete newCard;
-	//newCard = 0;
-	
+	int iRand = 0;
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = i + 1; j > 0; j--)
+		{
+			iRand = rand() % m_vecpCards.size();
+			m_pTableau->PushCard(m_vecpCards.at(iRand), i);
+			m_vecpCards.erase(m_vecpCards.begin() + iRand);
+		}
+		
+	}
+
+	iRand = 0;
+	while (m_vecpCards.size() != 0)
+	{
+		iRand = rand() % m_vecpCards.size();
+		m_pDeck->PushCard(m_vecpCards.at(iRand));
+		m_vecpCards.erase(m_vecpCards.begin() + iRand);
+	}
+
+
+	m_pCardBack = new CSprite();
+	m_pCardBack->Initialise(IDB_CARDBACK, IDB_CARDMASK);
+
+	m_pDeck->SetX(0);
+	m_pDeck->SetY(0);
 
 	ShowCursor(true);
 
@@ -114,8 +130,10 @@ CGame::Draw()
     m_pBackBuffer->Clear();
 
 // Do all the game’s drawing here...
+	m_pDeck->Draw();
+	
+	m_pTableau->Draw();
 	m_pDrawPile->Draw();
-
     m_pBackBuffer->Present();
 }
 
@@ -209,4 +227,105 @@ void CGame::SetCardWidth(int _iWidth)
 void CGame::SetCardHeight(int _iHeight)
 {
 	m_iCardHeight = _iHeight;
+}
+
+bool CGame::CheckDeckClicked(CGame& _rGame, POINT _mousePos)
+{
+	if (_rGame.m_pDeck->IsEmpty() == false)
+	{
+		RECT rectDeckArea;
+		rectDeckArea.left = 50 / 2;
+		rectDeckArea.top = 50 / 2;
+		rectDeckArea.right = 50 / 2 + 71;
+		rectDeckArea.bottom = 50 / 2 + 96;
+
+		if (PtInRect(&rectDeckArea, _mousePos))
+		{
+			_rGame.ShiftDeckToDraw();
+			return true;
+		}
+	}
+	else
+	{
+		RECT rectDeckArea;
+		rectDeckArea.left = 50 / 2;
+		rectDeckArea.top = 50 / 2;
+		rectDeckArea.right = 50 / 2 + 71;
+		rectDeckArea.bottom = 50 / 2 + 96;
+
+		if (PtInRect(&rectDeckArea, _mousePos))
+		{
+			_rGame.ShiftDrawToDeck();
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+CCard* CGame::CheckDraggableClicked(CGame& _rGame, POINT _mousePos)
+{
+	if (_rGame.m_pDrawPile->IsEmpty() == false)
+	{
+		CCard* FrontCard = _rGame.m_pDrawPile->TopCard;
+		RECT rectDrawPile;
+		/*rectDrawPile.left = FrontCard->GetSprite()->GetX()/2+20;
+		rectDrawPile.top = FrontCard->GetSprite()->GetY()/2;
+		rectDrawPile.right = FrontCard->GetSprite()->GetX()/2+20 + 71;
+		rectDrawPile.bottom = FrontCard->GetSprite()->GetY() + 96;*/
+
+		rectDrawPile.left = FrontCard->GetSprite()->GetX();
+		rectDrawPile.top = FrontCard->GetSprite()->GetY()/2;
+
+		rectDrawPile.right = FrontCard->GetSprite()->GetX()+100;
+		rectDrawPile.bottom = FrontCard->GetSprite()->GetY() + 96;
+
+		if (PtInRect(&rectDrawPile, _mousePos))
+		{
+			return FrontCard;
+		}
+		else
+		{
+			return nullptr;
+		}
+	}
+
+	return nullptr;
+}
+
+void CGame::Dragging(CGame & _rGame, POINT _mousePos)
+{
+
+}
+
+void CGame::ShiftDeckToDraw()
+{
+	int iCardsToDraw = 3;
+
+	// Clear drawing vector
+	while (m_pDrawPile->m_vecDrawPile.size() != 0)
+	{
+		m_pDrawPile->m_vecDrawPile.pop_back();
+	}
+	// Populate draw pile and vctor
+	while (m_pDeck->IsEmpty() == false && iCardsToDraw != 0)
+	{
+		CCard* tempCard = m_pDeck->PopCard();
+		m_pDrawPile->PushCard(tempCard);
+		m_pDrawPile->m_vecDrawPile.push_back(tempCard);
+		iCardsToDraw--;
+	}
+}
+
+void CGame::ShiftDrawToDeck()
+{
+	while (m_pDrawPile->m_vecDrawPile.size() != 0)
+	{
+		m_pDrawPile->m_vecDrawPile.pop_back();
+	}
+
+	while (m_pDrawPile->IsEmpty() == false)
+	{
+		m_pDeck->PushCard(m_pDrawPile->PopCard(false));
+	}
 }

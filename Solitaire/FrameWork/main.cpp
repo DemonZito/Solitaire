@@ -29,6 +29,9 @@
 LRESULT CALLBACK
 WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 {
+	static bool isDragging = false;
+	static CCard* Draggable = nullptr;
+
     switch (_uiMsg)
     {
         case WM_DESTROY:
@@ -70,6 +73,49 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 				default:break;
 				}
 		
+		}
+		case WM_LBUTTONDOWN:
+		{
+			POINT mousePos;
+			GetCursorPos(&mousePos);
+
+			if (!CGame::CheckDeckClicked(CGame::GetInstance(), mousePos))
+			{
+				Draggable = CGame::CheckDraggableClicked(CGame::GetInstance(), mousePos);
+			}
+			
+			if (Draggable != nullptr)
+			{
+				isDragging = true;
+				Draggable->SetDragging(true);
+			}
+			break;
+		}
+
+		case WM_MOUSEMOVE:
+		{
+			if (isDragging == true)
+			{
+				POINT mousePos;
+				GetCursorPos(&mousePos);
+
+				if (Draggable != nullptr)
+				{
+					Draggable->GetSprite()->SetX(mousePos.x);
+					Draggable->GetSprite()->SetY(mousePos.y);
+				}
+			}
+			break;
+		}
+		case WM_LBUTTONUP:
+		{
+			if (Draggable != nullptr)
+			{
+				Draggable->SetDragging(false);
+			}
+			isDragging = false;
+			Draggable = nullptr;
+			break;
 		}
         break;
 

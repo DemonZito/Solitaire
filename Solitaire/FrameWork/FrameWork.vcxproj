@@ -214,7 +214,6 @@
     <Image Include="ADiamond.bmp" />
     <Image Include="AHeart.bmp" />
     <Image Include="ASpade.bmp" />
-    <Image Include="CardBack.bmp" />
     <Image Include="JClub.bmp" />
     <Image Include="JDiamond.bmp" />
     <Image Include="JHeart.bmp" />
@@ -267,6 +266,7 @@
     <Image Include="Sprites\ADiamond.bmp" />
     <Image Include="Sprites\AHeart.bmp" />
     <Image Include="Sprites\ASpade.bmp" />
+    <Image Include="Sprites\CardBack.bmp" />
     <Image Include="Sprites\CardMask.bmp" />
     <Image Include="Sprites\JClub.bmp" />
     <Image Include="Sprites\JDiamond.bmp" />

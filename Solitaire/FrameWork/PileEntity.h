@@ -26,7 +26,7 @@
 // Constants
 
 // Prototypes
-class CSprite;
+//class CSprite;
 
 class CPileEntity
 {

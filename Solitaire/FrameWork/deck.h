@@ -13,26 +13,32 @@
 //
 #include <stack>
 
+#include "PileEntity.h"
 #include "card.h"
 
 #if !defined(__DECK_H__)
 #define __DECK_H__
 
-class CDeck
+class CDeck : public CPileEntity
 {
 public:
 	CDeck();
 	~CDeck();
 
 	void Initalize();
+	void Draw();
 
-	CCard PopCard();
+	CCard* PopCard();
+	void PushCard(CCard* _mCard);
+	bool IsEmpty();
 
-	void PushCard(const CCard _mCard);
+	void ShiftToDrawPile();
+
+	std::stack<CCard*> GetCards();
 
 
 private:
-	std::stack<CCard> m_staDeck;
+	std::stack<CCard*> m_staDeck;
 
 };
 

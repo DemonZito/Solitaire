@@ -12,6 +12,7 @@
 // Mail			: your.name@mediadesign.school.nz
 //
 #include <list>
+#include <vector>
 
 #include "card.h"
 #include "PileEntity.h"
@@ -28,15 +29,19 @@ public:
 	void Initalize();
 	void Draw();
 
-	CCard* PopCard();
+	CCard* PopCard(bool);
 
 	void PushCard(CCard* _mCard);
+	bool IsEmpty();
 
+	std::list<CCard*> GetCards();
 
-
+	CCard* TopCard;
+	std::vector<CCard*> m_vecDrawPile;
 
 private:
-	//std::list<CCard*> m_staDeck;
+	std::list<CCard*> m_staDeck;
+	
 
 };
 #endif // __DRAWPILE_H__

@@ -13,15 +13,52 @@ CTableauPile::~CTableauPile()
 
 void CTableauPile::Initalize()
 {
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < m_pTableauPile[i].size(); j++)
+		{
+
+		}
+	}
 }
 
-std::list<CCard> CTableauPile::PopCard(CCard* _mCard)
+void CTableauPile::Draw()
 {
-	std::list<CCard> _liMovingCards;
+	int iXOffset = 50;
+	int iYOffset = 300;
+
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < m_pTableauPile[i].size(); j++)
+		{
+			if (m_pTableauPile[i].at(j)->GetDragging() == false)
+			{
+				m_pTableauPile[i].at(j)->GetSprite()->SetX(i * 50 + iXOffset);
+				m_pTableauPile[i].at(j)->GetSprite()->SetY(300 + (j*20));
+				m_pTableauPile[i].at(j)->GetSprite()->Draw();
+
+				if (j == m_pTableauPile[i].size()-1)
+				{
+					m_pTableauPile[i].at(j)->setVisible(true);
+				}
+			}
+			else
+			{
+				m_pTableauPile[i].at(j)->GetSprite()->Draw();
+			}
+		}
+		
+	}
+}
+
+std::deque<CCard> CTableauPile::PopCard(CCard* _mCard)
+{
+	std::deque<CCard> _liMovingCards;
+
 	return _liMovingCards;
 }
 
-void CTableauPile::PushCard(const CCard _mCard)
+void CTableauPile::PushCard(CCard* _mCard, int _iNum)
 {
-	m_pTableauPile.push_front(_mCard);
+	m_pTableauPile[_iNum].push_back(_mCard);
 }

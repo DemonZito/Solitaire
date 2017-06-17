@@ -17,6 +17,7 @@
 // Local Includes
 #include "card.h"
 #include "utils.h"
+#include "game.h"
 
 // Static Variables
 
@@ -26,12 +27,13 @@
 
 
 
-CCard::CCard(size_t _szNumber, size_t _bColour, size_t _Suit, bool _bisVisible)
+CCard::CCard(size_t _szNumber, size_t _bColour, size_t _Suit, bool _bisVisible, bool _bIsDragging)
 {
 	m_szNumber = _szNumber;
 	m_bColour = static_cast<colour>(_bColour);
 	m_Suit = static_cast<suit>(_Suit);
 	m_bisVisible = _bisVisible;
+	m_bDragging = _bIsDragging;
 }
 
 
@@ -84,7 +86,21 @@ int CCard::getY() {
 	return m_iY;
 }
 
+bool CCard::GetDragging()
+{
+	return m_bDragging;
+}
+
+void CCard::SetDragging(bool _state)
+{
+	m_bDragging = _state;
+}
+
 CSprite* CCard::GetSprite()
 {
+	if (m_bisVisible == false)
+	{
+		return CGame::GetInstance().m_pCardBack;
+	}
 	return m_pSprite;
 }

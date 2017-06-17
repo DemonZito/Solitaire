@@ -33,7 +33,7 @@ enum colour {
 class CCard
 {
 public:
-	CCard(size_t _szNumber, size_t _bColour, size_t _Suit, bool _bisVisible);
+	CCard(size_t _szNumber, size_t _bColour, size_t _Suit, bool _bisVisible, bool _bIsDragging);
 	~CCard();
 
 	bool Initialise(const int _kiSpriteID, const int _kiMaskID);
@@ -51,6 +51,9 @@ public:
 	void setY(const int& _iY);
 	int getY();
 
+	bool GetDragging();
+	void SetDragging(bool);
+
 
 	CSprite* GetSprite();
 
@@ -61,6 +64,7 @@ private:
 	size_t m_szNumber;
 	colour m_bColour;
 	suit m_Suit;
+	bool m_bDragging;
 
 	int m_iX;
 	int m_iY;
