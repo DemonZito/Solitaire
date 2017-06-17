@@ -113,8 +113,9 @@ CGame::Initialise(HINSTANCE _hInstance, HWND _hWnd, int _iWidth, int _iHeight)
 	}
 
 
-	m_pCardBack = new CSprite();
-	m_pCardBack->Initialise(IDB_CARDBACK, IDB_CARDMASK);
+	
+
+	m_pTableau->Initalize();
 
 	m_pDeck->SetX(0);
 	m_pDeck->SetY(0);
@@ -131,9 +132,9 @@ CGame::Draw()
 
 // Do all the game’s drawing here...
 	m_pDeck->Draw();
-	
-	m_pTableau->Draw();
 	m_pDrawPile->Draw();
+	m_pTableau->Draw();
+
     m_pBackBuffer->Present();
 }
 
@@ -234,10 +235,10 @@ bool CGame::CheckDeckClicked(CGame& _rGame, POINT _mousePos)
 	if (_rGame.m_pDeck->IsEmpty() == false)
 	{
 		RECT rectDeckArea;
-		rectDeckArea.left = 50 / 2;
-		rectDeckArea.top = 50 / 2;
-		rectDeckArea.right = 50 / 2 + 71;
-		rectDeckArea.bottom = 50 / 2 + 96;
+		rectDeckArea.left = _rGame.m_pDeck->GetCards().top()->GetSprite()->GetX()/2;
+		rectDeckArea.top = _rGame.m_pDeck->GetCards().top()->GetSprite()->GetY()/2;
+		rectDeckArea.right = _rGame.m_pDeck->GetCards().top()->GetSprite()->GetX()/2 + 71;
+		rectDeckArea.bottom = _rGame.m_pDeck->GetCards().top()->GetSprite()->GetY()/2 + 96;
 
 		if (PtInRect(&rectDeckArea, _mousePos))
 		{

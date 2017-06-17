@@ -22,12 +22,10 @@ void CDeck::Draw()
 
 	for (int i = 0; i < m_staDeck.size(); i++)
 	{
-
 		m_staDeck.top()->GetSprite()->SetX(iOffset);
 		m_staDeck.top()->GetSprite()->SetY(iOffset);
 		m_staDeck.top()->GetSprite()->Draw();
 		iOffset -= 0.1;
-
 	}
 }
 
@@ -47,14 +45,6 @@ void CDeck::PushCard(CCard* _mCard)
 bool CDeck::IsEmpty()
 {
 	return m_staDeck.empty();
-}
-
-void CDeck::ShiftToDrawPile()
-{
-	while (m_staDeck.size() != 0)
-	{
-		
-	}
 }
 
 std::stack<CCard*> CDeck::GetCards()

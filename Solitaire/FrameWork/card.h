@@ -65,6 +65,8 @@ private:
 	colour m_bColour;
 	suit m_Suit;
 	bool m_bDragging;
+	CSprite* m_pCardBack;
+
 
 	int m_iX;
 	int m_iY;

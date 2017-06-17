@@ -83,7 +83,6 @@ private:
     // Member Variables
 public:
 
-	CSprite* m_pCardBack;
 
 protected:
     CClock* m_pClock;

@@ -18,6 +18,7 @@
 #include "card.h"
 #include "utils.h"
 #include "game.h"
+#include "resource.h"
 
 // Static Variables
 
@@ -45,6 +46,9 @@ bool CCard::Initialise(const int _kiSpriteID, const int _kiMaskID)
 {
 	m_pSprite = new CSprite();
 	VALIDATE(m_pSprite->Initialise(_kiSpriteID, _kiMaskID));
+
+	m_pCardBack = new CSprite();
+	m_pCardBack->Initialise(IDB_CARDBACK, IDB_CARDMASK);
 
 	return (true);
 }
@@ -100,7 +104,7 @@ CSprite* CCard::GetSprite()
 {
 	if (m_bisVisible == false)
 	{
-		return CGame::GetInstance().m_pCardBack;
+		return m_pCardBack;
 	}
 	return m_pSprite;
 }

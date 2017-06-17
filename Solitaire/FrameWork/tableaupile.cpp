@@ -17,7 +17,10 @@ void CTableauPile::Initalize()
 	{
 		for (int j = 0; j < m_pTableauPile[i].size(); j++)
 		{
-
+			if (j == m_pTableauPile[i].size() - 1)
+			{
+				m_pTableauPile[i].at(j)->setVisible(true);
+			}
 		}
 	}
 }
@@ -36,11 +39,6 @@ void CTableauPile::Draw()
 				m_pTableauPile[i].at(j)->GetSprite()->SetX(i * 50 + iXOffset);
 				m_pTableauPile[i].at(j)->GetSprite()->SetY(300 + (j*20));
 				m_pTableauPile[i].at(j)->GetSprite()->Draw();
-
-				if (j == m_pTableauPile[i].size()-1)
-				{
-					m_pTableauPile[i].at(j)->setVisible(true);
-				}
 			}
 			else
 			{
