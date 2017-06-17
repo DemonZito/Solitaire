@@ -61,7 +61,9 @@ public:
 	static void SetCardHeight(int _iHeight);
 
 	static bool CheckDeckClicked(CGame& _rGame, POINT _mousePos);
+	//static RECT CheckDraggableClicked(CGame& _rGame, POINT _mousePos);
 	static CCard* CheckDraggableClicked(CGame& _rGame, POINT _mousePos);
+
 	static void Dragging(CGame& _rGame, POINT _mousePos);
 
 	void ShiftDeckToDraw();

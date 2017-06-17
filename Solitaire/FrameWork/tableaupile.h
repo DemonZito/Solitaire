@@ -32,6 +32,7 @@ public:
 	std::deque<CCard> PopCard(CCard* _mCard);
 
 	void PushCard(CCard* _mCard, int _iNum);
+	std::deque<CCard*>* GetTableau();
 
 private:
 	std::deque<CCard*> m_pTableauPile[7];

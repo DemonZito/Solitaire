@@ -265,32 +265,52 @@ bool CGame::CheckDeckClicked(CGame& _rGame, POINT _mousePos)
 }
 
 CCard* CGame::CheckDraggableClicked(CGame& _rGame, POINT _mousePos)
+//RECT CGame::CheckDraggableClicked(CGame& _rGame, POINT _mousePos)
 {
-	if (_rGame.m_pDrawPile->IsEmpty() == false)
+	//if (_rGame.m_pDrawPile->IsEmpty() == false)
+	//{
+	//	CCard* FrontCard = _rGame.m_pDrawPile->TopCard;
+	//	RECT rectDrawPile;
+	//	/*rectDrawPile.left = FrontCard->GetSprite()->GetX()/2+20;
+	//	rectDrawPile.top = FrontCard->GetSprite()->GetY()/2;
+	//	rectDrawPile.right = FrontCard->GetSprite()->GetX()/2+20 + 71;
+	//	rectDrawPile.bottom = FrontCard->GetSprite()->GetY() + 96;*/
+
+	//	rectDrawPile.left = FrontCard->GetSprite()->GetX();
+	//	rectDrawPile.top = FrontCard->GetSprite()->GetY()/2;
+
+	//	rectDrawPile.right = FrontCard->GetSprite()->GetX()+100;
+	//	rectDrawPile.bottom = FrontCard->GetSprite()->GetY() + 96;
+
+	//	if (PtInRect(&rectDrawPile, _mousePos))
+	//	{
+	//		return FrontCard;
+	//	}
+	//}
+	RECT rectTableau;
+
+	for (int i = 0; i < 7; i++)
 	{
-		CCard* FrontCard = _rGame.m_pDrawPile->TopCard;
-		RECT rectDrawPile;
-		/*rectDrawPile.left = FrontCard->GetSprite()->GetX()/2+20;
-		rectDrawPile.top = FrontCard->GetSprite()->GetY()/2;
-		rectDrawPile.right = FrontCard->GetSprite()->GetX()/2+20 + 71;
-		rectDrawPile.bottom = FrontCard->GetSprite()->GetY() + 96;*/
-
-		rectDrawPile.left = FrontCard->GetSprite()->GetX();
-		rectDrawPile.top = FrontCard->GetSprite()->GetY()/2;
-
-		rectDrawPile.right = FrontCard->GetSprite()->GetX()+100;
-		rectDrawPile.bottom = FrontCard->GetSprite()->GetY() + 96;
-
-		if (PtInRect(&rectDrawPile, _mousePos))
+		for (int j = 0; j < _rGame.m_pTableau->GetTableau()[i].size(); j++)
 		{
-			return FrontCard;
-		}
-		else
-		{
-			return nullptr;
+			//m_iX - (iW / 2)
+			rectTableau.left = _rGame.m_pTableau->GetTableau()[i].at(j)->GetSprite()->GetX() - 70/2 ;
+			rectTableau.top = _rGame.m_pTableau->GetTableau()[i].at(j)->GetSprite()->GetY() - 96/2 + 21;
+			rectTableau.right = _rGame.m_pTableau->GetTableau()[i].at(j)->GetSprite()->GetX() + 70/2;
+			rectTableau.bottom = _rGame.m_pTableau->GetTableau()[i].at(j)->GetSprite()->GetY() - 96 / 2 + 35;
+			
+			if (PtInRect(&rectTableau, _mousePos))
+			{
+				//if (_rGame.m_pTableau->GetTableau()[i].at(j)->getVisible())
+				//{
+					return _rGame.m_pTableau->GetTableau()[i].at(j);
+					//return rectTableau;
+				//}
+			}
 		}
 	}
 
+	//return rectTableau;
 	return nullptr;
 }
 

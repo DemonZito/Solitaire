@@ -31,6 +31,10 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 {
 	static bool isDragging = false;
 	static CCard* Draggable = nullptr;
+	static RECT debug;
+
+	HDC hdc;
+	PAINTSTRUCT ps;
 
     switch (_uiMsg)
     {
@@ -40,6 +44,18 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 
             return(0);
         }
+		case WM_PAINT:
+		{
+			hdc = BeginPaint(_hWnd, &ps);
+			HBRUSH drawingBrush = CreateSolidBrush(RGB(0,0,0));
+			FillRect(hdc, &debug, drawingBrush);
+
+			EndPaint(_hWnd, &ps);
+			// Return Success.
+			return (0);
+
+			break;
+		}
 		case WM_SIZING:
 		{
 			RECT _rect;
@@ -82,6 +98,11 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 			if (!CGame::CheckDeckClicked(CGame::GetInstance(), mousePos))
 			{
 				Draggable = CGame::CheckDraggableClicked(CGame::GetInstance(), mousePos);
+				//RECT _rect;
+				//GetClientRect(_hWnd, &_rect);
+
+				//debug = CGame::CheckDraggableClicked(CGame::GetInstance(), mousePos);
+				//InvalidateRect(_hWnd, &_rect, false);
 			}
 			
 			if (Draggable != nullptr)
