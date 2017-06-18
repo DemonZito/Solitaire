@@ -100,6 +100,7 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 				mousePos.y = s_iCurMouseY;
 
 				CGame::CheckWhereDropped(CGame::GetInstance(), mousePos, Draggable);
+				CGame::CheckFoundationDropped(CGame::GetInstance(), mousePos, Draggable);
 				Draggable->SetDragging(false);
 			}
 			isDragging = false;

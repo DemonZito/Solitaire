@@ -35,6 +35,7 @@ class CTableauPile;
 class CCard;
 class CSprite;
 class CBackGround;
+class CFoundationPile;
 
 class CGame
 {
@@ -66,6 +67,7 @@ public:
 	static CCard* CheckDraggableClicked(CGame& _rGame, POINT _mousePos);
 
 	static void CheckWhereDropped(CGame& _rGame, POINT _mousePos, CCard* _dragged);
+	static void CheckFoundationDropped(CGame& _rGame, POINT _mousePos, CCard* _dragged);
 
 	static void Dragging(CGame& _rGame, POINT _mousePos);
 
@@ -107,6 +109,7 @@ private:
 	CDeck* m_pDeck;
 	CTableauPile* m_pTableau;
 	CBackGround* m_pBackground;
+	CFoundationPile* m_pFoundation;
 
 	std::vector<CCard*> m_vecpCards;
 	std::vector<CCard*> m_vecpCardsToDelete;

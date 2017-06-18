@@ -18,21 +18,21 @@
 #include <stack>
 
 #include "card.h"
+#include "PileEntity.h"
 
-class CFoundationPile
+class CFoundationPile : public CPileEntity
 {
 public:
 	CFoundationPile();
 	~CFoundationPile();
-
 	void Initalize();
-
-	CCard PopCard();
-
-	void PushCard(const CCard _mCard);
+	CCard* PopCard(int _iPile);
+	void PushCard(CCard* _mCard, int _iPile);
+	void Draw();
+	std::stack<CCard*>* GetFoundation();
 
 private:
-	std::stack<CCard> m_pFoundationPile;
+	std::stack<CCard*> m_pFoundationPile[4];
 	
 };
 
