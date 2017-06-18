@@ -29,7 +29,7 @@ public:
 	void Initalize();
 	void Draw();
 
-	std::deque<CCard> PopCard(CCard* _mCard);
+	std::deque<CCard*> PopCard(CCard* _mCard, int _iPileDest);
 
 	void PushCard(CCard* _mCard, int _iNum);
 	std::deque<CCard*>* GetTableau();

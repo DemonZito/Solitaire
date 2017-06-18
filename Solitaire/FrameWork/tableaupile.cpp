@@ -66,15 +66,31 @@ void CTableauPile::Draw()
 	}
 }
 
-std::deque<CCard> CTableauPile::PopCard(CCard* _mCard)
+std::deque<CCard*> CTableauPile::PopCard(CCard* _mCard, int _iPileDest)
 {
-	std::deque<CCard> _liMovingCards;
+	std::deque<CCard*> _liMovingCards;
+	bool bCardsAfter = false;
+
+	for (int i = 0; i < m_pTableauPile[_iPileDest].size();)
+	{
+		if (m_pTableauPile[_iPileDest].at(i)->GetDragging() == true || bCardsAfter == true)
+		{
+			_liMovingCards.push_back(m_pTableauPile[_iPileDest].at(i));
+			m_pTableauPile[_iPileDest].erase(m_pTableauPile[_iPileDest].begin() + i);
+			bCardsAfter = true;
+		}
+		else
+		{
+			i++;
+		}
+	}
 
 	return _liMovingCards;
 }
 
 void CTableauPile::PushCard(CCard* _mCard, int _iNum)
 {
+	_mCard->SetPileDest(_iNum+1);
 	m_pTableauPile[_iNum].push_back(_mCard);
 }
 

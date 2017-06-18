@@ -65,7 +65,7 @@ const size_t CCard::getNumber() {
 	return m_szNumber;
 }
 
-const bool CCard::getColour() 
+colour CCard::getColour() 
 {
 	return m_bColour;
 }
@@ -98,6 +98,16 @@ bool CCard::GetDragging()
 void CCard::SetDragging(bool _state)
 {
 	m_bDragging = _state;
+}
+
+int CCard::GetPileDest()
+{
+	return m_iPileDest;
+}
+
+void CCard::SetPileDest(int _iDest)
+{
+	m_iPileDest = _iDest;
 }
 
 CSprite* CCard::GetSprite()

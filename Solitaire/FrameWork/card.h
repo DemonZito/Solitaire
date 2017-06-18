@@ -42,7 +42,7 @@ public:
 	void setVisible(bool _bisVisible);
 
 	const size_t getNumber();
-	const bool getColour();
+	colour getColour();
 
 	suit getSuit();
 
@@ -53,6 +53,9 @@ public:
 
 	bool GetDragging();
 	void SetDragging(bool);
+
+	int GetPileDest();
+	void SetPileDest(int);
 
 
 	CSprite* GetSprite();
@@ -67,6 +70,7 @@ private:
 	bool m_bDragging;
 	CSprite* m_pCardBack;
 
+	int m_iPileDest;
 
 	int m_iX;
 	int m_iY;

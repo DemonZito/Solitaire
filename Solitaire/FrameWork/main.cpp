@@ -132,6 +132,10 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 		{
 			if (Draggable != nullptr)
 			{
+				//Check where dropped
+				POINT mousePos;
+				GetCursorPos(&mousePos);
+				CGame::CheckWhereDropped(CGame::GetInstance(), mousePos, Draggable);
 				Draggable->SetDragging(false);
 			}
 			isDragging = false;

@@ -53,6 +53,21 @@ CCard* CDrawPile::PopCard(bool _Visibility)
 	return _DrawnCard;
 }
 
+void CDrawPile::EraseCard(CCard* _toDelete)
+{
+	for (auto it = m_staDeck.begin(); it != m_staDeck.end();)
+	{
+		if ((*it) == _toDelete)
+		{
+			it = m_staDeck.erase(it);
+		}
+		else
+		{
+			++it;
+		}
+	}
+}
+
 void CDrawPile::PushCard(CCard* _mCard)
 {
 	m_staDeck.push_back(_mCard);

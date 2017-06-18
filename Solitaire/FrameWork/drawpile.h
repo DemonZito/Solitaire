@@ -31,6 +31,8 @@ public:
 
 	CCard* PopCard(bool);
 
+	void EraseCard(CCard*);
+
 	void PushCard(CCard* _mCard);
 	bool IsEmpty();
 

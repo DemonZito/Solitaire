@@ -64,6 +64,8 @@ public:
 	//static RECT CheckDraggableClicked(CGame& _rGame, POINT _mousePos);
 	static CCard* CheckDraggableClicked(CGame& _rGame, POINT _mousePos);
 
+	static void CheckWhereDropped(CGame& _rGame, POINT _mousePos, CCard* _dragged);
+
 	static void Dragging(CGame& _rGame, POINT _mousePos);
 
 	void ShiftDeckToDraw();
