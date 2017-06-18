@@ -7,6 +7,16 @@ CFoundationPile::CFoundationPile()
 
 CFoundationPile::~CFoundationPile()
 {
+	for (int i = 0; i < 4; i++)
+	{
+		while (m_pFoundationPile[i].size() != 0)
+		{
+			CCard* temp = m_pFoundationPile[i].top();
+			m_pFoundationPile[i].pop();
+			delete temp;
+		}
+
+	}
 }
 
 void CFoundationPile::Initalize()

@@ -10,6 +10,19 @@ CDrawPile::CDrawPile()
 
 CDrawPile::~CDrawPile()
 {
+	/*while (m_vecDrawPile.size() != 0)
+	{
+		CCard* tempCard = m_vecDrawPile.back();
+		m_vecDrawPile.pop_back();
+		delete tempCard;
+	}*/
+
+	while (m_staDeck.size() != 0)
+	{
+		CCard* tempCard = m_staDeck.back();
+		m_staDeck.pop_back();
+		delete tempCard;
+	}
 }
 
 void CDrawPile::Initalize()

@@ -42,6 +42,20 @@ public:
 
 private:
 	CSprite* m_pSprite;
+	CSprite* m_pDeckSlot;
+	CSprite* m_pFoundationOne;
+	CSprite* m_pFoundationTwo;
+	CSprite* m_pFoundationThree;
+	CSprite* m_pFoundationFour;
+	CSprite* m_pTableauPile1;
+	CSprite* m_pTableauPile2;
+	CSprite* m_pTableauPile3;
+	CSprite* m_pTableauPile4;
+	CSprite* m_pTableauPile5;
+	CSprite* m_pTableauPile6;
+	CSprite* m_pTableauPile7;
+
+
 };
 
 #endif

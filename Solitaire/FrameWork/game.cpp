@@ -54,6 +54,7 @@ CGame::CGame()
 	m_pDeck = new CDeck();
 	m_pTableau = new CTableauPile();
 	m_pFoundation = new CFoundationPile();
+	cardDragging = nullptr;
 }
 
 CGame::~CGame()
@@ -73,6 +74,11 @@ CGame::~CGame()
 	delete m_pTableau;
 	m_pTableau = 0;
 
+	delete m_pFoundation;
+	m_pFoundation = 0;
+
+	delete m_pBackground;
+	m_pBackground = 0;
 	/*
 	while (m_vecpCardsToDelete.size() != 0)
 	{
@@ -118,7 +124,7 @@ CGame::Initialise(HINSTANCE _hInstance, HWND _hWnd, int _iWidth, int _iHeight)
 			}
 			pNewCard->Initialise(iCardSpriteTrack, IDB_CARDMASK);
 			m_vecpCards.push_back(pNewCard);
-			m_vecpCardsToDelete.push_back(pNewCard);
+			//m_vecpCardsToDelete.push_back(pNewCard);
 			iCardSpriteTrack++;
 
 		}
@@ -174,6 +180,11 @@ CGame::Draw()
 	m_pDrawPile->Draw();
 	m_pTableau->Draw();
 
+	if (cardDragging != nullptr)
+	{
+		//cardDragging->GetSprite()->Draw();
+	}
+	
 	m_pBackBuffer->Present();
 }
 
@@ -326,6 +337,7 @@ CCard* CGame::CheckDraggableClicked(CGame& _rGame, POINT _mousePos)
 
 		if (PtInRect(&rectDrawPile, _mousePos))
 		{
+			_rGame.cardDragging = FrontCard;
 			return FrontCard;
 		}
 	}
@@ -354,6 +366,7 @@ CCard* CGame::CheckDraggableClicked(CGame& _rGame, POINT _mousePos)
 			{
 				if (_rGame.m_pTableau->GetTableau()[i].at(j)->getVisible())
 				{
+					_rGame.cardDragging = _rGame.m_pTableau->GetTableau()[i].at(j);
 					return _rGame.m_pTableau->GetTableau()[i].at(j);
 					//return rectTableau;
 				}
@@ -380,10 +393,10 @@ void CGame::CheckWhereDropped(CGame & _rGame, POINT _mousePos, CCard* _dragged)
 
 		if (j == -1)
 		{
-			rectTableau.left = (i * 100) + 50;
-			rectTableau.top = 300;
-			rectTableau.right = (i * 100) + 50 + 70;
-			rectTableau.bottom = 300 + 96;
+			rectTableau.left = ((i * 100) + 50) - 70/2;
+			rectTableau.top = 300 - 96/2;
+			rectTableau.right = (i * 100) + 50 + 70/2;
+			rectTableau.bottom = 300 + 96/2;
 			tempCard = nullptr;
 
 		}
@@ -459,10 +472,10 @@ void CGame::CheckFoundationDropped(CGame & _rGame, POINT _mousePos, CCard* _drag
 
 	for (int i = 0; i < 4; i++)
 	{
-		rectFoundation.left = (i * 100) + 300;
-		rectFoundation.top = 50;
-		rectFoundation.right = (i * 100) + 300 + 70;
-		rectFoundation.bottom = 50 + 96;
+		rectFoundation.left = ((i * 100) + 300) - 70/2;
+		rectFoundation.top = 50 - 96/2;
+		rectFoundation.right = ((i * 100)) + 300 + 70/2;
+		rectFoundation.bottom = 50 + 96/2;
 
 		if (PtInRect(&rectFoundation, _mousePos))
 		{

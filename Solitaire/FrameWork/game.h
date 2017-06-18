@@ -113,6 +113,7 @@ private:
 
 	std::vector<CCard*> m_vecpCards;
 	std::vector<CCard*> m_vecpCardsToDelete;
+	CCard* cardDragging;
 
 	
 };

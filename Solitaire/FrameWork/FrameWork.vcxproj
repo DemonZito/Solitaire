@@ -273,8 +273,12 @@
     <Image Include="Sprites\ADiamond.bmp" />
     <Image Include="Sprites\AHeart.bmp" />
     <Image Include="Sprites\ASpade.bmp" />
+    <Image Include="Sprites\Background.bmp" />
+    <Image Include="Sprites\BackgroundMask.bmp" />
     <Image Include="Sprites\CardBack.bmp" />
     <Image Include="Sprites\CardMask.bmp" />
+    <Image Include="Sprites\EmptyCardSlot.bmp" />
+    <Image Include="Sprites\EmptyCardSlotMask.bmp" />
     <Image Include="Sprites\JClub.bmp" />
     <Image Include="Sprites\JDiamond.bmp" />
     <Image Include="Sprites\JHeart.bmp" />

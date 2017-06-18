@@ -423,5 +423,17 @@
     <Image Include="D:\Users\Madeleine.Day7218\Downloads\BackgroundMask.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Sprites\EmptyCardSlot.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\EmptyCardSlotMask.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\Background.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\BackgroundMask.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
