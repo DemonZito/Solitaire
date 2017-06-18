@@ -16,25 +16,25 @@ void CPileEntity::Draw()
 {
 	
 
-	for (std::list<CCard*>::iterator it = m_listpSprite.begin(); it != m_listpSprite.end(); ++it)
+	/*for (std::list<CCard*>::iterator it = m_listpSprite.begin(); it != m_listpSprite.end(); ++it)
 	{
 		if ((*it)->getVisible() == true)
 		{
 			(*it)->GetSprite()->Draw();
 		}
-	}
+	}*/
 }
 
 void CPileEntity::Process(float _fDeltaTick)
 {
 
-	for (std::list<CCard*>::iterator it = m_listpSprite.begin(); it != m_listpSprite.end(); ++it)
+	/*for (std::list<CCard*>::iterator it = m_listpSprite.begin(); it != m_listpSprite.end(); ++it)
 	{
 		(*it)->GetSprite()->SetX(static_cast<int>(m_fX));
 		(*it)->GetSprite()->SetY(static_cast<int>(m_fY));
 
 		(*it)->GetSprite()->Process(_fDeltaTick);
-	}
+	}*/
 }
 
 void CPileEntity::SetX(float _f)

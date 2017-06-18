@@ -9,6 +9,12 @@ CDeck::CDeck()
 
 CDeck::~CDeck()
 {
+	while (m_staDeck.size() != 0)
+	{
+		CCard* tempCard = m_staDeck.top();
+		m_staDeck.pop();
+		delete tempCard;
+	}
 }
 
 void CDeck::Initalize()
@@ -22,8 +28,8 @@ void CDeck::Draw()
 
 	for (int i = 0; i < m_staDeck.size(); i++)
 	{
-		m_staDeck.top()->GetSprite()->SetX(iOffset);
-		m_staDeck.top()->GetSprite()->SetY(iOffset);
+		m_staDeck.top()->GetSprite()->SetX(iOffset+2.4);
+		m_staDeck.top()->GetSprite()->SetY(iOffset+2.4);
 		m_staDeck.top()->GetSprite()->Draw();
 		iOffset -= 0.1;
 	}

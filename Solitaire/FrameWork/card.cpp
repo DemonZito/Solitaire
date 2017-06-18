@@ -40,6 +40,8 @@ CCard::CCard(size_t _szNumber, size_t _bColour, size_t _Suit, bool _bisVisible, 
 
 CCard::~CCard()
 {
+	delete m_pSprite;
+	delete m_pCardBack;
 }
 
 bool CCard::Initialise(const int _kiSpriteID, const int _kiMaskID)

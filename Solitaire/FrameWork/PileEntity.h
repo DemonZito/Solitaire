@@ -45,12 +45,6 @@ public:
 	float GetX() const;
 	float GetY() const;
 
-	//float GetHeight() const;
-	//float GetWidth() const;
-
-	//void SetWidth(int _iWidth);
-	//void SetHeight(int _iHeight);
-
 
 protected:
 
@@ -63,7 +57,7 @@ public:
 
 protected:
 
-	std::list<CCard*> m_listpSprite;
+	//std::list<CCard*> m_listpSprite;
 
 	float m_fX;
 	float m_fY;

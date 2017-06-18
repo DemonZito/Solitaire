@@ -9,6 +9,16 @@ CTableauPile::CTableauPile()
 
 CTableauPile::~CTableauPile()
 {
+	for (int i = 0; i < 7; i++)
+	{
+		while (m_pTableauPile[i].size() != 0)
+		{
+			CCard* temp = m_pTableauPile[i].back();
+			m_pTableauPile[i].pop_back();
+			delete temp;
+		}
+		
+	}
 }
 
 void CTableauPile::Initalize()

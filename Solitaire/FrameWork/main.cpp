@@ -15,6 +15,7 @@
 //Library Includes
 #include <windows.h>
 #include <windowsx.h>
+#include <vld.h>
 
 //Local Includes
 #include "Game.h"
@@ -31,7 +32,8 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 {
 	static bool isDragging = false;
 	static CCard* Draggable = nullptr;
-	static RECT debug;
+	static int s_iCurMouseX;
+	static int s_iCurMouseY;
 
 	HDC hdc;
 	PAINTSTRUCT ps;
@@ -43,57 +45,13 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
             PostQuitMessage(0);
 
             return(0);
-        }
-		case WM_PAINT:
-		{
-			hdc = BeginPaint(_hWnd, &ps);
-			HBRUSH drawingBrush = CreateSolidBrush(RGB(0,0,0));
-			FillRect(hdc, &debug, drawingBrush);
-
-			EndPaint(_hWnd, &ps);
-			// Return Success.
-			return (0);
-
 			break;
-		}
-		case WM_SIZING:
-		{
-			RECT _rect;
-
-			GetClientRect(_hWnd, &_rect);
-			CGame::SetRoomHeight(_rect.bottom);
-			CGame::SetRoomWidth(_rect.right);
-			CGame::SetCardWidth((_rect.right) / 11);
-			CGame::SetCardHeight((_rect.bottom - (3 * CGame::GetCardWidth() / 5)) / 4.6);
-			
-			switch (_wParam)
-			{
-				case WMSZ_TOP:
-				case WMSZ_BOTTOM:
-				case WMSZ_TOPLEFT:
-				case WMSZ_TOPRIGHT:
-				{
-					CGame::SetRoomWidth(_rect.bottom / 9 * 16);
-					SetWindowPos(_hWnd, _hWnd, _rect.left, _rect.top, CGame::GetRoomWidth(), CGame::GetRoomHeight(), NULL);
-					break;
-				}
-				case WMSZ_LEFT:
-				case WMSZ_RIGHT:
-				case WMSZ_BOTTOMLEFT:
-				case WMSZ_BOTTOMRIGHT:
-				{
-					CGame::SetRoomHeight(_rect.right / 16 * 9);
-					SetWindowPos(_hWnd, _hWnd, _rect.left, _rect.top, CGame::GetRoomWidth(), CGame::GetRoomHeight(), NULL);
-					break;
-				}
-				default:break;
-				}
-		
-		}
+        }
 		case WM_LBUTTONDOWN:
 		{
 			POINT mousePos;
-			GetCursorPos(&mousePos);
+			mousePos.x = s_iCurMouseX;
+			mousePos.y = s_iCurMouseY;
 
 			if (!CGame::CheckDeckClicked(CGame::GetInstance(), mousePos))
 			{
@@ -115,10 +73,14 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 
 		case WM_MOUSEMOVE:
 		{
+			s_iCurMouseX = static_cast<int>(LOWORD(_lParam));
+			s_iCurMouseY = static_cast<int>(HIWORD(_lParam));
+
 			if (isDragging == true)
 			{
 				POINT mousePos;
-				GetCursorPos(&mousePos);
+				mousePos.x = s_iCurMouseX;
+				mousePos.y = s_iCurMouseY;
 
 				if (Draggable != nullptr)
 				{
@@ -134,7 +96,9 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 			{
 				//Check where dropped
 				POINT mousePos;
-				GetCursorPos(&mousePos);
+				mousePos.x = s_iCurMouseX;
+				mousePos.y = s_iCurMouseY;
+
 				CGame::CheckWhereDropped(CGame::GetInstance(), mousePos, Draggable);
 				Draggable->SetDragging(false);
 			}
@@ -178,7 +142,7 @@ CreateAndRegisterWindow(HINSTANCE _hInstance, int _iWidth, int _iHeight, LPCWSTR
     hwnd = CreateWindowEx(WS_EX_CLIENTEDGE,
                   WINDOW_CLASS_NAME,
                   _pcTitle,
-              WS_BORDER | WS_CAPTION | WS_SYSMENU | WS_VISIBLE | WS_MAXIMIZEBOX | WS_MINIMIZEBOX | WS_SIZEBOX,
+              WS_BORDER | WS_CAPTION | WS_SYSMENU | WS_VISIBLE,
                   CW_USEDEFAULT, CW_USEDEFAULT,
                   _iWidth, _iHeight,
                   NULL,
@@ -201,14 +165,11 @@ WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCmdline, int _i
     MSG msg;
     ZeroMemory(&msg, sizeof(MSG));
 
-	HWND DesktopWindow = GetDesktopWindow();
-	RECT _rect;
-	GetClientRect(DesktopWindow, &_rect);
 
-    const int kiWidth = _rect.right;
-    const int kiHeight = _rect.bottom;
+    const int kiWidth = 720;
+    const int kiHeight = 960;
 
-    HWND hwnd = CreateAndRegisterWindow(_hInstance, kiWidth, kiHeight, L"BSENGG Framework");
+    HWND hwnd = CreateAndRegisterWindow(_hInstance, kiWidth, kiHeight, L"Solitaire");
 
     CGame& rGame = CGame::GetInstance();
 

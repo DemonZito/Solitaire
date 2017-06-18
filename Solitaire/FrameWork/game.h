@@ -34,6 +34,7 @@ class CDeck;
 class CTableauPile;
 class CCard;
 class CSprite;
+class CBackGround;
 
 class CGame
 {
@@ -92,6 +93,7 @@ protected:
     CClock* m_pClock;
 
     CBackBuffer* m_pBackBuffer;
+	
 
     //Application data
     HINSTANCE m_hApplicationInstance;
@@ -104,8 +106,10 @@ private:
 	CDrawPile* m_pDrawPile;
 	CDeck* m_pDeck;
 	CTableauPile* m_pTableau;
+	CBackGround* m_pBackground;
 
 	std::vector<CCard*> m_vecpCards;
+	std::vector<CCard*> m_vecpCardsToDelete;
 
 	
 };

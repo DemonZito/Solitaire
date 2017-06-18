@@ -48,6 +48,9 @@
     <ClCompile Include="PileEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="backbuffer.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PileEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -409,6 +415,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Sprites\CardBack.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="D:\Users\Madeleine.Day7218\Downloads\Background.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="D:\Users\Madeleine.Day7218\Downloads\BackgroundMask.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
