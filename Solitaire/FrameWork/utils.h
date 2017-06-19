@@ -4,12 +4,12 @@
 // Auckland
 // New Zealand
 //
-// (c) 2016 Media Design School
+// (c) 2017 Media Design School
 //
-// File Name	: 
-// Description	: 
-// Author		: Your Name
-// Mail			: your.name@mediadesign.school.nz
+// File Name	: utils.h
+// Description	: Utils template file
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
 //
 
 #if !defined(__UTILS_H__)
@@ -17,14 +17,6 @@
 
 // Library Includes
 #include <strstream>
-
-// Local Includes
-
-// Types
-
-// Constants
-
-// Prototypes
 
 #define VALIDATE(a) if (!a) return (false)
 

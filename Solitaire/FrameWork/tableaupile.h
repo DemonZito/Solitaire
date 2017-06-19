@@ -4,12 +4,12 @@
 // Auckland
 // New Zealand
 //
-// (c) 2016 Media Design School
+// (c) 2017 Media Design School
 //
-// File Name	: 
-// Description	: 
-// Author		: Your Name
-// Mail			: your.name@mediadesign.school.nz
+// File Name	: tableaupile.h
+// Description	: Tableau pile header file
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
 //
 
 #if !defined(__TABLEAUPILE_H__)

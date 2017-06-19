@@ -4,12 +4,12 @@
 // Auckland
 // New Zealand
 //
-// (c) 2016 Media Design School
+// (c) 2017 Media Design School
 //
-// File Name	: 
-// Description	: 
-// Author		: Your Name
-// Mail			: your.name@mediadesign.school.nz
+// File Name	: backbuffer.h
+// Description	: Backbuffer header file
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
 //
 
 #if !defined(__BACKBUFFER_H__)
@@ -17,12 +17,6 @@
 
 // Library Includes
 #include <Windows.h>
-
-// Local Includes
-
-// Types
-
-// Constants
 
 // Prototypes
 class CBackBuffer

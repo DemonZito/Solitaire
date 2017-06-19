@@ -4,14 +4,13 @@
 // Auckland
 // New Zealand
 //
-// (c) 2016 Media Design School
+// (c) 2017 Media Design School
 //
-// File Name	: 
-// Description	: 
-// Author		: Your Name
-// Mail			: your.name@mediadesign.school.nz
+// File Name	: card.h
+// Description	: Card header file
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
 //
-
 #if !defined(__CARD_H__)
 #define __CARD_H__
 
@@ -83,7 +82,7 @@ public:
 private:
 
 	CSprite* m_pSprite;
-	bool m_bisVisible; // 0 is invisible. 1 is visible
+	bool m_bisVisible; 
 	size_t m_szNumber;
 	colour m_bColour;
 	suit m_Suit;
@@ -97,5 +96,5 @@ private:
 
 }; 
 
-#endif // __CLOCK_H__
+#endif // __CARD_H__
 

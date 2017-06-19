@@ -1,7 +1,19 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2017 Media Design School
+//
+// File Name	: pileentity.cpp
+// Description	: Holds all the pile entities
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
+//
+
 #include "PileEntity.h"
 #include "Sprite.h"
-
-
 
 CPileEntity::CPileEntity()
 {

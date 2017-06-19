@@ -1,3 +1,17 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2017 Media Design School
+//
+// File Name	: deck.cpp
+// Description	: Stores hidden cards
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
+//
+
 #include "deck.h"
 
 
@@ -15,10 +29,6 @@ CDeck::~CDeck()
 		m_staDeck.pop();
 		delete tempCard;
 	}
-}
-
-void CDeck::Initalize()
-{
 }
 
 void CDeck::Draw()

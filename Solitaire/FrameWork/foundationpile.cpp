@@ -1,3 +1,17 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2017 Media Design School
+//
+// File Name	: foundationpile.cpp
+// Description	: 4 piles of the playing board
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
+//
+
 #include "foundationpile.h"
 
 CFoundationPile::CFoundationPile()
@@ -17,10 +31,6 @@ CFoundationPile::~CFoundationPile()
 		}
 
 	}
-}
-
-void CFoundationPile::Initalize()
-{
 }
 
 CCard* CFoundationPile::PopCard(int _iPile)

@@ -4,12 +4,12 @@
 // Auckland
 // New Zealand
 //
-// (c) 2016 Media Design School
+// (c) 2017 Media Design School
 //
-// File Name	: 
-// Description	: 
-// Author		: Your Name
-// Mail			: your.name@mediadesign.school.nz
+// File Name	: game.cpp
+// Description	: Game engine
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
 //
 
 // Library Includes
@@ -31,7 +31,6 @@
 
 // This Include
 #include "Game.h"
-//#include "PileEntity.h"
 
 // Static Variables
 CGame* CGame::s_pGame = 0;
@@ -54,7 +53,7 @@ CGame::CGame()
 	m_pDeck = new CDeck();
 	m_pTableau = new CTableauPile();
 	m_pFoundation = new CFoundationPile();
-	cardDragging = nullptr;
+	m_cardDragging = nullptr;
 	m_iCardsToDraw = 3;
 }
 
@@ -80,14 +79,6 @@ CGame::~CGame()
 
 	delete m_pBackground;
 	m_pBackground = 0;
-	/*
-	while (m_vecpCardsToDelete.size() != 0)
-	{
-	CCard* tempCard = m_vecpCardsToDelete.back();
-	m_vecpCardsToDelete.pop_back();
-	delete tempCard;
-	}
-	*/
 }
 
 bool
@@ -111,6 +102,7 @@ CGame::Initialise(HINSTANCE _hInstance, HWND _hWnd, int _iWidth, int _iHeight)
 	CCard* pNewCard;
 	int iCardSpriteTrack = 102;
 
+	// Add to entire card vector
 	for (size_t suit = 1; suit < 5; suit++)
 	{
 		for (size_t num = 1; num < 14; num++)
@@ -181,9 +173,9 @@ CGame::Draw()
 	m_pDrawPile->Draw();
 	m_pTableau->Draw();
 
-	if (cardDragging != nullptr)
+	if (m_cardDragging != nullptr)
 	{
-		int iRedraw = cardDragging->GetPileDest();
+		int iRedraw = m_cardDragging->GetPileDest();
 
 		if (iRedraw > 0 && iRedraw < 8)
 		{
@@ -197,7 +189,7 @@ CGame::Draw()
 		{
 			m_pDrawPile->Draw();
 		}
-		else
+		else if(iRedraw >= 10)
 		{
 			m_pFoundation->GetFoundation()[iRedraw - 10].top()->GetSprite()->Draw();
 		}
@@ -211,7 +203,6 @@ CGame::Process(float _fDeltaTick)
 {
 	// Process all the game’s logic here.
 	//Load a new sprite.
-	m_pDrawPile->Process(_fDeltaTick);
 }
 
 void
@@ -302,13 +293,10 @@ bool CGame::CheckDeckClicked(CGame& _rGame, POINT _mousePos)
 {
 	if (_rGame.m_pDeck->IsEmpty() == false)
 	{
-		//int iX = m_iX - (iW / 2);
-		//int iY = m_iY - (iH / 2);
-
 		RECT rectDeckArea;
-		rectDeckArea.left = _rGame.m_pDeck->GetCards().top()->GetSprite()->GetX() - 70 / 2;
+		rectDeckArea.left = _rGame.m_pDeck->GetCards().top()->GetSprite()->GetX() - 71 / 2;
 		rectDeckArea.top = _rGame.m_pDeck->GetCards().top()->GetSprite()->GetY() - 96 / 2;
-		rectDeckArea.right = _rGame.m_pDeck->GetCards().top()->GetSprite()->GetX() + 70 / 2;
+		rectDeckArea.right = _rGame.m_pDeck->GetCards().top()->GetSprite()->GetX() + 71 / 2;
 		rectDeckArea.bottom = _rGame.m_pDeck->GetCards().top()->GetSprite()->GetY() + 96 / 2;
 
 		if (PtInRect(&rectDeckArea, _mousePos))
@@ -336,26 +324,20 @@ bool CGame::CheckDeckClicked(CGame& _rGame, POINT _mousePos)
 }
 
 CCard* CGame::CheckDraggableClicked(CGame& _rGame, POINT _mousePos)
-//RECT CGame::CheckDraggableClicked(CGame& _rGame, POINT _mousePos)
 {
 	if (_rGame.m_pDrawPile->IsEmpty() == false)
 	{
 		CCard* FrontCard = _rGame.m_pDrawPile->TopCard;
 		RECT rectDrawPile;
-		/*rectDrawPile.left = FrontCard->GetSprite()->GetX()/2+20;
-		rectDrawPile.top = FrontCard->GetSprite()->GetY()/2;
-		rectDrawPile.right = FrontCard->GetSprite()->GetX()/2+20 + 71;
-		rectDrawPile.bottom = FrontCard->GetSprite()->GetY() + 96;*/
 
-		rectDrawPile.left = FrontCard->GetSprite()->GetX() - 70 / 2;
+		rectDrawPile.left = FrontCard->GetSprite()->GetX() - 71 / 2;
 		rectDrawPile.top = FrontCard->GetSprite()->GetY() - 96 / 2;
 
-		rectDrawPile.right = FrontCard->GetSprite()->GetX() + 70 / 2;
+		rectDrawPile.right = FrontCard->GetSprite()->GetX() + 71 / 2;
 		rectDrawPile.bottom = FrontCard->GetSprite()->GetY() + 96 / 2;
 
 		if (PtInRect(&rectDrawPile, _mousePos))
 		{
-			_rGame.cardDragging = FrontCard;
 			return FrontCard;
 		}
 	}
@@ -366,9 +348,9 @@ CCard* CGame::CheckDraggableClicked(CGame& _rGame, POINT _mousePos)
 		for (unsigned int j = 0; j < _rGame.m_pTableau->GetTableau()[i].size(); j++)
 		{
 			RECT rectTableau;
-			rectTableau.left = _rGame.m_pTableau->GetTableau()[i].at(j)->GetSprite()->GetX() - 70 / 2;
+			rectTableau.left = _rGame.m_pTableau->GetTableau()[i].at(j)->GetSprite()->GetX() - 71 / 2;
 			rectTableau.top = _rGame.m_pTableau->GetTableau()[i].at(j)->GetSprite()->GetY() - 96 / 2;
-			rectTableau.right = _rGame.m_pTableau->GetTableau()[i].at(j)->GetSprite()->GetX() + 70 / 2;
+			rectTableau.right = _rGame.m_pTableau->GetTableau()[i].at(j)->GetSprite()->GetX() + 71 / 2;
 
 			if (j == _rGame.m_pTableau->GetTableau()[i].size() - 1)
 			{
@@ -384,9 +366,7 @@ CCard* CGame::CheckDraggableClicked(CGame& _rGame, POINT _mousePos)
 			{
 				if (_rGame.m_pTableau->GetTableau()[i].at(j)->getVisible())
 				{
-					_rGame.cardDragging = _rGame.m_pTableau->GetTableau()[i].at(j);
 					return _rGame.m_pTableau->GetTableau()[i].at(j);
-					//return rectTableau;
 				}
 				else if (j == _rGame.m_pTableau->GetTableau()[i].size() - 1 && _rGame.m_pTableau->GetTableau()[i].at(j)->getVisible() == false)
 				{
@@ -401,9 +381,9 @@ CCard* CGame::CheckDraggableClicked(CGame& _rGame, POINT _mousePos)
 		if (_rGame.m_pFoundation->GetFoundation()[i].size() != 0)
 		{
 			RECT rectFoundation;
-			rectFoundation.left = _rGame.m_pFoundation->GetFoundation()[i].top()->GetSprite()->GetX() - 70 / 2;
+			rectFoundation.left = _rGame.m_pFoundation->GetFoundation()[i].top()->GetSprite()->GetX() - 71 / 2;
 			rectFoundation.top = _rGame.m_pFoundation->GetFoundation()[i].top()->GetSprite()->GetY() - 96 / 2;
-			rectFoundation.right = _rGame.m_pFoundation->GetFoundation()[i].top()->GetSprite()->GetX() + 70 / 2;
+			rectFoundation.right = _rGame.m_pFoundation->GetFoundation()[i].top()->GetSprite()->GetX() + 71 / 2;
 			rectFoundation.bottom = _rGame.m_pFoundation->GetFoundation()[i].top()->GetSprite()->GetY() + 96 / 2;
 
 			if (PtInRect(&rectFoundation, _mousePos))
@@ -414,7 +394,6 @@ CCard* CGame::CheckDraggableClicked(CGame& _rGame, POINT _mousePos)
 		}
 	}
 
-	//return rectTableau;
 	return nullptr;
 }
 
@@ -429,9 +408,9 @@ void CGame::CheckWhereDropped(CGame & _rGame, POINT _mousePos, CCard* _dragged)
 
 		if (j == -1)
 		{
-			rectTableau.left = ((i * 100) + 50) - 70/2;
+			rectTableau.left = ((i * 100) + 50) - 71/2;
 			rectTableau.top = 300 - 96/2;
-			rectTableau.right = (i * 100) + 50 + 70/2;
+			rectTableau.right = (i * 100) + 50 + 71/2;
 			rectTableau.bottom = 300 + 96/2;
 			tempCard = nullptr;
 
@@ -441,9 +420,9 @@ void CGame::CheckWhereDropped(CGame & _rGame, POINT _mousePos, CCard* _dragged)
 			tempCard = _rGame.m_pTableau->GetTableau()[i].at(j);
 
 
-			rectTableau.left = tempCard->GetSprite()->GetX() - 70 / 2;
+			rectTableau.left = tempCard->GetSprite()->GetX() - 71 / 2;
 			rectTableau.top = tempCard->GetSprite()->GetY() - 96 / 2;
-			rectTableau.right = tempCard->GetSprite()->GetX() + 70 / 2;
+			rectTableau.right = tempCard->GetSprite()->GetX() + 71 / 2;
 			rectTableau.bottom = _rGame.m_pTableau->GetTableau()[i].at(j)->GetSprite()->GetY() + 96 / 2;
 		}
 
@@ -514,9 +493,9 @@ void CGame::CheckFoundationDropped(CGame & _rGame, POINT _mousePos, CCard* _drag
 
 	for (int i = 0; i < 4; i++)
 	{
-		rectFoundation.left = ((i * 100) + 300) - 70/2;
+		rectFoundation.left = ((i * 100) + 300) - 71/2;
 		rectFoundation.top = 50 - 96/2;
-		rectFoundation.right = ((i * 100)) + 300 + 70/2;
+		rectFoundation.right = ((i * 100)) + 300 + 71/2;
 		rectFoundation.bottom = 50 + 96/2;
 
 		if (PtInRect(&rectFoundation, _mousePos))
@@ -584,7 +563,7 @@ bool CGame::CheckWin(CGame& _rGame)
 
 void CGame::SetDragging(CGame& _rGame, CCard* _dragging)
 {
-	_rGame.cardDragging = _dragging;
+	_rGame.m_cardDragging = _dragging;
 }
 
 void CGame::CheckEmptyDrawPile(CGame& _rGame)
@@ -641,7 +620,7 @@ void CGame::NewGame()
 	m_pDeck = new CDeck();
 	m_pTableau = new CTableauPile();
 	m_pFoundation = new CFoundationPile();
-	cardDragging = nullptr;
+	m_cardDragging = nullptr;
 }
 
 void CGame::ShiftDeckToDraw()

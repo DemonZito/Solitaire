@@ -4,14 +4,13 @@
 // Auckland
 // New Zealand
 //
-// (c) 2016 Media Design School
+// (c) 2017 Media Design School
 //
-// File Name	: 
-// Description	: 
-// Author		: Your Name
-// Mail			: your.name@mediadesign.school.nz
+// File Name	: Background.h
+// Description	: Background header file
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
 //
-
 #pragma once
 
 #if !defined(__BACKGROUND_H__)
@@ -21,12 +20,6 @@
 
 // Local Includes
 #include "sprite.h"
-// Types
-
-// Constants
-
-// Prototypes
-//class CSprite;
 
 class CBackGround
 {
@@ -38,7 +31,6 @@ public:
 	virtual bool Initialise(int _iWidth, int _iHeight);
 
 	virtual void Draw();
-	virtual void Process(float _fDeltaTick);
 
 private:
 	CSprite* m_pSprite;
@@ -54,8 +46,6 @@ private:
 	CSprite* m_pTableauPile5;
 	CSprite* m_pTableauPile6;
 	CSprite* m_pTableauPile7;
-
-
 };
 
 #endif

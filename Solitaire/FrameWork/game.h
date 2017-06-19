@@ -4,12 +4,12 @@
 // Auckland
 // New Zealand
 //
-// (c) 2016 Media Design School
+// (c) 2017 Media Design School
 //
-// File Name	: 
-// Description	: 
-// Author		: Your Name
-// Mail			: your.name@mediadesign.school.nz
+// File Name	: game.h
+// Description	: Game header file
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
 //
 
 #if !defined(__GAME_H__)
@@ -22,10 +22,6 @@
 
 // Local Includes
 #include "clock.h"
-
-// Types
-
-// Constants
 
 // Prototypes
 class CBackBuffer;
@@ -63,7 +59,6 @@ public:
 	static void SetCardHeight(int _iHeight);
 
 	static bool CheckDeckClicked(CGame& _rGame, POINT _mousePos);
-	//static RECT CheckDraggableClicked(CGame& _rGame, POINT _mousePos);
 	static CCard* CheckDraggableClicked(CGame& _rGame, POINT _mousePos);
 
 	static void CheckWhereDropped(CGame& _rGame, POINT _mousePos, CCard* _dragged);
@@ -122,7 +117,7 @@ private:
 
 	std::vector<CCard*> m_vecpCards;
 	std::vector<CCard*> m_vecpCardsToDelete;
-	CCard* cardDragging;
+	CCard* m_cardDragging;
 	int m_iCardsToDraw;
 
 	

@@ -4,12 +4,12 @@
 // Auckland
 // New Zealand
 //
-// (c) 2016 Media Design School
+// (c) 2017 Media Design School
 //
-// File Name	: 
-// Description	: 
-// Author		: Your Name
-// Mail			: your.name@mediadesign.school.nz
+// File Name	: foundationpile.h
+// Description	: Foundation Pile header file
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
 //
 
 #if !defined(__FOUNDATIONPILE_H__)
@@ -25,7 +25,6 @@ class CFoundationPile : public CPileEntity
 public:
 	CFoundationPile();
 	~CFoundationPile();
-	void Initalize();
 	CCard* PopCard(int _iPile);
 	void PushCard(CCard* _mCard, int _iPile);
 	void Draw();

@@ -1,3 +1,17 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2017 Media Design School
+//
+// File Name	: drawpile.cpp
+// Description	: Where cards are drawn to
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
+//
+
 #include "drawpile.h"
 
 
@@ -10,13 +24,6 @@ CDrawPile::CDrawPile()
 
 CDrawPile::~CDrawPile()
 {
-	/*while (m_vecDrawPile.size() != 0)
-	{
-		CCard* tempCard = m_vecDrawPile.back();
-		m_vecDrawPile.pop_back();
-		delete tempCard;
-	}*/
-
 	while (m_staDeck.size() != 0)
 	{
 		CCard* tempCard = m_staDeck.back();

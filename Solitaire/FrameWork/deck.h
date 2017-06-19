@@ -4,13 +4,14 @@
 // Auckland
 // New Zealand
 //
-// (c) 2016 Media Design School
+// (c) 2017 Media Design School
 //
-// File Name	: 
-// Description	: 
-// Author		: Your Name
-// Mail			: your.name@mediadesign.school.nz
+// File Name	: deck.h
+// Description	: Deck header file
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
 //
+
 #include <stack>
 
 #include "PileEntity.h"
@@ -25,14 +26,11 @@ public:
 	CDeck();
 	~CDeck();
 
-	void Initalize();
 	void Draw();
 
 	CCard* PopCard();
 	void PushCard(CCard* _mCard);
 	bool IsEmpty();
-
-	void ShiftToDrawPile();
 
 	std::stack<CCard*> GetCards();
 

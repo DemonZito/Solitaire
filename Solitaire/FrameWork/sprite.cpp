@@ -4,12 +4,12 @@
 // Auckland
 // New Zealand
 //
-// (c) 2016 Media Design School
+// (c) 2017 Media Design School
 //
-// File Name	: 
-// Description	: 
-// Author		: Your Name
-// Mail			: your.name@mediadesign.school.nz
+// File Name	: sprite.cpp
+// Description	: Sprite implementation file
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
 //
 
 // Library Includes
@@ -26,7 +26,6 @@
 HDC CSprite::s_hSharedSpriteDC = 0;
 int CSprite::s_iRefCount = 0;
 
-// Static Function Prototypes
 
 // Implementation
 

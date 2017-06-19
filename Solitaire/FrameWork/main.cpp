@@ -4,18 +4,17 @@
 // Auckland
 // New Zealand
 //
-// (c) 2016 Media Design School
+// (c) 2017 Media Design School
 //
-// File Name	: 
-// Description	: 
-// Author		: Your Name
-// Mail			: your.name@mediadesign.school.nz
+// File Name	: main.cpp
+// Description	: Main entry point
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
 //
 
 //Library Includes
 #include <windows.h>
 #include <windowsx.h>
-#include <vld.h>
 
 //Local Includes
 #include "Game.h"
@@ -56,17 +55,13 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 			if (!CGame::CheckDeckClicked(CGame::GetInstance(), mousePos))
 			{
 				Draggable = CGame::CheckDraggableClicked(CGame::GetInstance(), mousePos);
-				//RECT _rect;
-				//GetClientRect(_hWnd, &_rect);
-
-				//debug = CGame::CheckDraggableClicked(CGame::GetInstance(), mousePos);
-				//InvalidateRect(_hWnd, &_rect, false);
 			}
 			
 			if (Draggable != nullptr)
 			{
 				isDragging = true;
 				Draggable->SetDragging(true);
+				CGame::SetDragging(CGame::GetInstance(), Draggable);
 			}
 			break;
 		}
@@ -105,6 +100,7 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 			}
 			isDragging = false;
 			Draggable = nullptr;
+			CGame::SetDragging(CGame::GetInstance(), nullptr);
 			CGame::CheckEmptyDrawPile(CGame::GetInstance());
 			break;
 		}

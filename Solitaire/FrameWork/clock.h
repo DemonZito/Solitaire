@@ -4,24 +4,16 @@
 // Auckland
 // New Zealand
 //
-// (c) 2016 Media Design School
+// (c) 2017 Media Design School
 //
-// File Name	: 
-// Description	: 
-// Author		: Your Name
-// Mail			: your.name@mediadesign.school.nz
+// File Name	: clock.h
+// Description	: Clock header file
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
 //
 
 #if !defined(__CLOCK_H__)
 #define __CLOCK_H__
-
-// Library Includes
-
-// Local Includes
-
-// Types
-
-// Constants
 
 // Prototypes
 class CClock

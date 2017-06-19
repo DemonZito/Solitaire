@@ -4,12 +4,12 @@
 // Auckland
 // New Zealand
 //
-// (c) 2016 Media Design School
+// (c) 2017 Media Design School
 //
-// File Name	: 
-// Description	: 
-// Author		: Your Name
-// Mail			: your.name@mediadesign.school.nz
+// File Name	: PileEntity.h
+// Description	: Generic pile header file
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
 //
 
 #pragma once
@@ -21,20 +21,12 @@
 #include <list>
 // Local Includes
 #include "card.h"
-// Types
-
-// Constants
-
-// Prototypes
-//class CSprite;
 
 class CPileEntity
 {
 public:
 	CPileEntity();
 	virtual ~CPileEntity();
-
-	//virtual bool Initialise(const int _kiSpriteID, const int _kiMaskID);
 
 	virtual void Draw() = 0;
 	virtual void Process(float _fDeltaTick);
@@ -56,8 +48,6 @@ private:
 public:
 
 protected:
-
-	//std::list<CCard*> m_listpSprite;
 
 	float m_fX;
 	float m_fY;

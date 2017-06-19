@@ -4,15 +4,13 @@
 // Auckland
 // New Zealand
 //
-// (c) 2016 Media Design School
+// (c) 2017 Media Design School
 //
-// File Name	: 
-// Description	: 
-// Author		: Your Name
-// Mail			: your.name@mediadesign.school.nz
+// File Name	: card.cpp
+// Description	: Cards of the game
+// Author		: Madeleine, Jack and Joseph
+// Mail			: madeleine.day7218@mediadesign.school.nz (leader)
 //
-
-// Library Includes
 
 // Local Includes
 #include "card.h"
@@ -20,13 +18,8 @@
 #include "game.h"
 #include "resource.h"
 
-// Static Variables
-
-// Static Function Prototypes
 
 // Implementation
-
-
 
 CCard::CCard(size_t _szNumber, size_t _bColour, size_t _Suit, bool _bisVisible, bool _bIsDragging)
 {
@@ -41,7 +34,10 @@ CCard::CCard(size_t _szNumber, size_t _bColour, size_t _Suit, bool _bisVisible, 
 CCard::~CCard()
 {
 	delete m_pSprite;
+	m_pSprite = 0;
+
 	delete m_pCardBack;
+	m_pCardBack = 0;
 }
 
 bool CCard::Initialise(const int _kiSpriteID, const int _kiMaskID)
@@ -55,15 +51,18 @@ bool CCard::Initialise(const int _kiSpriteID, const int _kiMaskID)
 	return (true);
 }
 
-bool CCard::getVisible() {
+bool CCard::getVisible() 
+{
 	return m_bisVisible;
 }
 
-void CCard::setVisible(bool _bisVisible) {
+void CCard::setVisible(bool _bisVisible) 
+{
 	m_bisVisible = _bisVisible;
 }
 
-const size_t CCard::getNumber() {
+const size_t CCard::getNumber() 
+{
 	return m_szNumber;
 }
 
@@ -72,24 +71,9 @@ colour CCard::getColour()
 	return m_bColour;
 }
 
-suit CCard::getSuit() {
+suit CCard::getSuit() 
+{
 	return m_Suit;
-}
-
-void CCard::setX(const int& _iX) {
-	m_iX = _iX;
-}
-
-int CCard::getX() {
-	return m_iX;
-}
-
-void CCard::setY(const int& _iY) {
-	m_iY = _iY;
-}
-
-int CCard::getY() {
-	return m_iY;
 }
 
 bool CCard::GetDragging()
