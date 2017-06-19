@@ -287,6 +287,7 @@
     <Image Include="Sprites\KDiamond.bmp" />
     <Image Include="Sprites\KHeart.bmp" />
     <Image Include="Sprites\KSpade.bmp" />
+    <Image Include="Sprites\MDSCardBack.bmp" />
     <Image Include="Sprites\QClub.bmp" />
     <Image Include="Sprites\QDiamond.bmp" />
     <Image Include="Sprites\QHearts.bmp" />

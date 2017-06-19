@@ -18,16 +18,36 @@
 //Header Files
 #include "sprite.h"
 
-enum suit { NOSUIT = 0, 
-			HEART = 1, 
-			CLUB, 
-			DIAMOND,
-			SPADE };
+enum suit 
+{ 
+	NOSUIT = 0, 
+	HEART = 1, 
+	CLUB, 
+	DIAMOND,
+	SPADE
+};
 
-enum colour {
+enum colour 
+{
 	NOCOLOUR = 0,
 	BLACK = 1,
 	RED
+};
+
+enum dest
+{
+	DECK = 0,
+	TABLEAU1,
+	TABLEAU2,
+	TABLEAU3,
+	TABLEAU4,
+	TABLEAU5,
+	TABLEAU6,
+	TABLEAU7,
+	FOUNDATION1 = 10,
+	FOUNDATION2,
+	FOUNDATION3,
+	FOUNDATION4
 };
 
 class CCard
@@ -54,10 +74,10 @@ public:
 	bool GetDragging();
 	void SetDragging(bool);
 
-	int GetPileDest();
-	void SetPileDest(int);
+	dest GetPileDest();
+	void SetPileDest(dest);
 
-
+	CSprite* GetBackSprite();
 	CSprite* GetSprite();
 
 private:
@@ -70,7 +90,7 @@ private:
 	bool m_bDragging;
 	CSprite* m_pCardBack;
 
-	int m_iPileDest;
+	dest m_iPileDest;
 
 	int m_iX;
 	int m_iY;

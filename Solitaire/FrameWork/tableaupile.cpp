@@ -25,7 +25,7 @@ void CTableauPile::Initalize()
 {
 	for (int i = 0; i < 7; i++)
 	{
-		for (int j = 0; j < m_pTableauPile[i].size(); j++)
+		for (unsigned int j = 0; j < m_pTableauPile[i].size(); j++)
 		{
 			if (j == m_pTableauPile[i].size() - 1)
 			{
@@ -45,7 +45,7 @@ void CTableauPile::Draw()
 
 	for (int i = 0; i < 7; i++)
 	{
-		for (int j = 0; j < m_pTableauPile[i].size(); j++)
+		for (unsigned int j = 0; j < m_pTableauPile[i].size(); j++)
 		{
 			if (m_pTableauPile[i].at(j)->GetDragging() == false)
 			{
@@ -81,7 +81,7 @@ std::deque<CCard*> CTableauPile::PopCard(CCard* _mCard, int _iPileDest)
 	std::deque<CCard*> _liMovingCards;
 	bool bCardsAfter = false;
 
-	for (int i = 0; i < m_pTableauPile[_iPileDest].size();)
+	for (unsigned int i = 0; i < m_pTableauPile[_iPileDest].size();)
 	{
 		if (m_pTableauPile[_iPileDest].at(i)->GetDragging() == true || bCardsAfter == true)
 		{
@@ -100,7 +100,7 @@ std::deque<CCard*> CTableauPile::PopCard(CCard* _mCard, int _iPileDest)
 
 void CTableauPile::PushCard(CCard* _mCard, int _iNum)
 {
-	_mCard->SetPileDest(_iNum+1);
+	_mCard->SetPileDest(static_cast<dest>(_iNum+1));
 	m_pTableauPile[_iNum].push_back(_mCard);
 }
 

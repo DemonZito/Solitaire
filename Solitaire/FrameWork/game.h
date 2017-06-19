@@ -69,10 +69,19 @@ public:
 	static void CheckWhereDropped(CGame& _rGame, POINT _mousePos, CCard* _dragged);
 	static void CheckFoundationDropped(CGame& _rGame, POINT _mousePos, CCard* _dragged);
 
-	static void Dragging(CGame& _rGame, POINT _mousePos);
+	static bool CheckWin(CGame& _rGame);
+	static void SetDragging(CGame& _rGame, CCard*);
+
+	static void CheckEmptyDrawPile(CGame& _rGame);
+
+	static void ChangeBackSprite(CGame& _rGame, int _iBackIndex);
+
+	void NewGame();
 
 	void ShiftDeckToDraw();
 	void ShiftDrawToDeck();
+
+	static void SetCardsToDraw(CGame& _rGame, int);
 	
 
 
@@ -114,6 +123,7 @@ private:
 	std::vector<CCard*> m_vecpCards;
 	std::vector<CCard*> m_vecpCardsToDelete;
 	CCard* cardDragging;
+	int m_iCardsToDraw;
 
 	
 };

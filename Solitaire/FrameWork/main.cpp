@@ -15,15 +15,17 @@
 //Library Includes
 #include <windows.h>
 #include <windowsx.h>
-#include <vld.h>
+//#include <vld.h>
 
 //Local Includes
 #include "Game.h"
 #include "Clock.h"
 #include "utils.h"
 #include "card.h"
+#include "resource.h"
 
 //Global Variables
+HMENU g_hMenu;
 
 #define WINDOW_CLASS_NAME L"BSENGGFRAMEWORK"
 
@@ -34,9 +36,6 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 	static CCard* Draggable = nullptr;
 	static int s_iCurMouseX;
 	static int s_iCurMouseY;
-
-	HDC hdc;
-	PAINTSTRUCT ps;
 
     switch (_uiMsg)
     {
@@ -105,6 +104,30 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 			}
 			isDragging = false;
 			Draggable = nullptr;
+			CGame::CheckEmptyDrawPile(CGame::GetInstance());
+			break;
+		}
+		case WM_COMMAND:
+		{
+			switch (LOWORD(_wParam))
+			{
+			case ID_DRAWAMOUNT_1:
+			{
+				CGame::SetCardsToDraw(CGame::GetInstance(), 1);
+				break;
+			}
+			case ID_DRAWAMOUNT_3:
+			{
+				CGame::SetCardsToDraw(CGame::GetInstance(), 3);
+				break;
+			}
+			case ID_CARDBACKS_MDS:
+			{
+				CGame::ChangeBackSprite(CGame::GetInstance(), 2);
+				break;
+			}
+			default:break;
+			}
 			break;
 		}
         break;
@@ -140,6 +163,8 @@ CreateAndRegisterWindow(HINSTANCE _hInstance, int _iWidth, int _iHeight, LPCWSTR
     }
 
     HWND hwnd; 
+	g_hMenu = LoadMenu(_hInstance, MAKEINTRESOURCE(IDR_MENU1));
+
     hwnd = CreateWindowEx(WS_EX_CLIENTEDGE,
                   WINDOW_CLASS_NAME,
                   _pcTitle,
@@ -147,7 +172,7 @@ CreateAndRegisterWindow(HINSTANCE _hInstance, int _iWidth, int _iHeight, LPCWSTR
                   CW_USEDEFAULT, CW_USEDEFAULT,
                   _iWidth, _iHeight,
                   NULL,
-                  NULL,
+                  g_hMenu,
                   _hInstance,
                   NULL);
     
@@ -190,6 +215,11 @@ WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCmdline, int _i
         else
         {
             rGame.ExecuteOneFrame();
+			if (rGame.CheckWin(rGame))
+			{
+				MessageBoxA(hwnd, "Congratulations, you actually won Solitaire!", "WINNER!", MB_OK);
+				rGame.Initialise(_hInstance, hwnd, kiWidth, kiHeight);
+			}
         }
     }
 

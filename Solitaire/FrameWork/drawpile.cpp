@@ -35,10 +35,7 @@ void CDrawPile::Draw()
 	int iXOffset = 150;
 	int iPrintCards = 3;
 
-
-	//fix
-
-	for (int i = 0; i < m_vecDrawPile.size(); i++)
+	for (unsigned int i = 0; i < m_vecDrawPile.size(); i++)
 	{
 		if (m_vecDrawPile.at(i)->GetDragging() == false)
 		{

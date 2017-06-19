@@ -102,14 +102,19 @@ void CCard::SetDragging(bool _state)
 	m_bDragging = _state;
 }
 
-int CCard::GetPileDest()
+dest CCard::GetPileDest()
 {
 	return m_iPileDest;
 }
 
-void CCard::SetPileDest(int _iDest)
+void CCard::SetPileDest(dest _iDest)
 {
 	m_iPileDest = _iDest;
+}
+
+CSprite * CCard::GetBackSprite()
+{
+	return m_pCardBack;
 }
 
 CSprite* CCard::GetSprite()
