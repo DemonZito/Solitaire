@@ -187,7 +187,7 @@ CGame::Draw()
 
 		if (iRedraw > 0 && iRedraw < 8)
 		{
-			for (int i = 0; i < m_pTableau->GetTableau()[iRedraw - 1].size(); i++)
+			for (unsigned int i = 0; i < m_pTableau->GetTableau()[iRedraw - 1].size(); i++)
 			{
 				m_pTableau->GetTableau()[iRedraw - 1].at(i)->GetSprite()->Draw();
 			}
@@ -603,6 +603,13 @@ void CGame::ChangeBackSprite(CGame & _rGame, int _iBackIndex)
 		for (int i = 0; i < 52; i++)
 		{
 			_rGame.m_vecpCardsToDelete.at(i)->GetBackSprite()->Initialise(IDB_MDSCARDBACK, IDB_CARDMASK);
+		}
+	}
+	else if (_iBackIndex == 1)
+	{
+		for (int i = 0; i < 52; i++)
+		{
+			_rGame.m_vecpCardsToDelete.at(i)->GetBackSprite()->Initialise(IDB_CARDBACK, IDB_CARDMASK);
 		}
 	}
 }

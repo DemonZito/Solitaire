@@ -15,7 +15,7 @@
 //Library Includes
 #include <windows.h>
 #include <windowsx.h>
-//#include <vld.h>
+#include <vld.h>
 
 //Local Includes
 #include "Game.h"
@@ -26,6 +26,7 @@
 
 //Global Variables
 HMENU g_hMenu;
+bool g_bResetVar;
 
 #define WINDOW_CLASS_NAME L"BSENGGFRAMEWORK"
 
@@ -126,6 +127,24 @@ WindowProc(HWND _hWnd, UINT _uiMsg, WPARAM _wParam, LPARAM _lParam)
 				CGame::ChangeBackSprite(CGame::GetInstance(), 2);
 				break;
 			}
+			case ID_CARDBACKS_KING:
+			{
+				CGame::ChangeBackSprite(CGame::GetInstance(), 1);
+				break;
+			}
+			case ID_GAME_QUIT:
+			{
+				PostQuitMessage(0);
+
+				return(0);
+				break;
+			}
+			case ID_GAME_RESET:
+			{
+				g_bResetVar = true;
+				break;
+			}
+
 			default:break;
 			}
 			break;
@@ -195,6 +214,8 @@ WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCmdline, int _i
     const int kiWidth = 720;
     const int kiHeight = 960;
 
+	g_bResetVar = false;
+
     HWND hwnd = CreateAndRegisterWindow(_hInstance, kiWidth, kiHeight, L"Solitaire");
 
     CGame& rGame = CGame::GetInstance();
@@ -219,6 +240,12 @@ WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCmdline, int _i
 			{
 				MessageBoxA(hwnd, "Congratulations, you actually won Solitaire!", "WINNER!", MB_OK);
 				rGame.Initialise(_hInstance, hwnd, kiWidth, kiHeight);
+			}
+			else if (g_bResetVar == true)
+			{
+				rGame.NewGame();
+				rGame.Initialise(_hInstance, hwnd, kiWidth, kiHeight);
+				g_bResetVar = false;
 			}
         }
     }

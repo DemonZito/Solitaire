@@ -26,12 +26,12 @@ void CDeck::Draw()
 
 	float iOffset = 50;
 
-	for (int i = 0; i < m_staDeck.size(); i++)
+	for (unsigned int i = 0; i < m_staDeck.size(); i++)
 	{
-		m_staDeck.top()->GetSprite()->SetX(iOffset+2.4);
-		m_staDeck.top()->GetSprite()->SetY(iOffset+2.4);
+		m_staDeck.top()->GetSprite()->SetX(static_cast<int>(iOffset+2.4f));
+		m_staDeck.top()->GetSprite()->SetY(static_cast<int>(iOffset+2.4f));
 		m_staDeck.top()->GetSprite()->Draw();
-		iOffset -= 0.1;
+		iOffset -= 0.1f;
 	}
 }
 
